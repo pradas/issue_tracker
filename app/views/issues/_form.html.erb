@@ -10,33 +10,48 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %>
-    <%= f.text_field :title %>
+  
+  <div class="row">
+    <div class="col-md-10">
+      <%= f.label :title %>
+      <%= f.text_field :title, {:class => "form-control"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= f.label :description %>
+      <%= f.text_area :description,  {:class => "form-control"} %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10">
+      <%= f.label :user_id %>
+      <%= f.number_field :user_id, {:class => "form-control"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= f.label :kind %>
+      <%= f.text_field :kind, {:class => "form-control"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :kind %>
-    <%= f.text_field :kind %>
+  <div class="row">
+    <div class="col-md-10">
+      <%= f.label :priority %>
+      <%= f.text_field :priority, {:class => "form-control"} %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :priority %>
-    <%= f.text_field :priority %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="col-md-1">
+      <%= f.submit 'Create Issue', :class => 'btn btn-primary' %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to 'Back', issues_path %>
+    </div>
   </div>
 <% end %>
