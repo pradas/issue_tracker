@@ -34,8 +34,8 @@
                   <td><%= link_to issue.title, issue %></td>
                   <td><%= issue.kind %></td>
                   <td><%= issue.priority %></td>
-                  <td><%= issue.status %></td>
-                  <td><%= issue.votes %></td>
+                  <td><span class="label label-success"><%= issue.status %></span></td>
+                  <td><span class="badge"><%= issue.votes %></span></td>
                   <td><%= issue.user.name %></td>
                   <td><%= issue.created_at %></td>
                   <td><%= issue.updated_at %></td>
