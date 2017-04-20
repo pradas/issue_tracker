@@ -4,10 +4,12 @@
     <title>Issues Tracker</title>
     <%= csrf_meta_tags %>
 
-    <!-- #stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
     <!-- #javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <!-- Latest compiled and minified CSS -->
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
     <!-- jQuery library -->
@@ -26,8 +28,7 @@
         <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %>
       <% end %>
     </div>
-    <div id="app">
-      <%= yield %>
-    </div>
+    <%= yield %>
+
   </body>
 </html>

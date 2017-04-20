@@ -1,3 +1,173 @@
 // Place all the styles related to the Issues controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#issues-toolbar .filter-container {
+    float: left;
+    margin: 5px 0 0 0;
+}
+
+
+.filter-container .filter-label {
+    float: left;
+    margin-right: 10px;
+    line-height: 30px;
+    color: #707070;
+}
+
+p:first-child , form.aui:first-child{
+    margin-top: 0;
+}
+
+.filter-label {
+    color: #707070;
+    display: inline-block;
+    line-height: 30px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+p {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+}
+
+.filter-status:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.filter-status>li {
+    float: left;
+    margin-right: 10px;
+}
+
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+
+.filter-status>li a {
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+    padding: 1px 7px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+a:-webkit-any-link {
+    color: -webkit-link;
+    cursor: auto;
+    text-decoration: underline;
+}
+
+.filter-status {
+    float: left;
+    margin: 0;
+    padding: 3px 0;
+    list-style: none;
+}
+
+#issues-toolbar .issues-toolbar-right {
+    float: right;
+    margin-left: 10px;
+}
+
+form.aui, form.aui fieldset {
+    position: relative;
+}
+
+
+#issues-toolbar #search .field-group {
+    padding: 0;
+}
+
+form.aui .date-select, form.aui .field-group, form.aui .group {
+    box-sizing: border-box;
+    clear: both;
+    padding: 4px 0 4px 145px;
+    position: relative;
+    margin: 1px 0;
+    width: 100%;
+}
+
+#issues-toolbar #search label {
+    position: absolute;
+    left: -9999px;
+}
+
+form.aui label, form.aui legend {
+    color: #707070;
+}
+
+
+
+
+#issues-toolbar #search input {
+    box-sizing: border-box;
+    -moz-appearance: textfield;
+    -webkit-appearance: textfield;
+    padding-left: 24px;
+    width: 200px;
+}
+
+form.aui .aui-select2-container .select2-choices, form.aui .password, form.aui .select, form.aui .text {
+    height: 2.14285714em;
+    line-height: 1.4285714285714;
+    padding: 4px 5px;
+}
+
+input[type=email], input[type=password], input[type=text], input[type=url], input[type=search], textarea {
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: 14px;
+    line-height: 1.28571429;
+    height: 28px;
+    border-radius: 3px;
+    padding: 4px;
+}
+
+input {
+    line-height: 1.14285714;
+}
+
+input:not([type]), input[type="email" i], input[type="number" i], input[type="password" i], input[type="tel" i], input[type="url" i], input[type="text" i] {
+    padding: 1px 0px;
+}
+
+#issues-toolbar #search .field-group::after {
+    font-family: "Atlassian Icons";
+    font-size: 16px;
+    content: "\f18d";
+    color: #707070;
+    position: absolute;
+    left: 6px;
+    top: 4px;
+}
+
+.filter-status>li a:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+
+
+
+
+

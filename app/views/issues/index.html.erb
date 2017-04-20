@@ -10,6 +10,41 @@
             <%= link_to 'New Issue', new_issue_path, {:class => "btn btn-default btn-block"} %>
           </div>
         </div>
+
+        <div id="issues-toolbar" class="clearfix">
+          <div class="filter-container">
+            <p class="filter-label">Filters:</p>
+            <ul class="filter-status">
+                      
+                      <li id="all">
+                        <%= link_to 'All', "issues" %>
+                      </li>
+                      <li id="open">
+                        <%= link_to 'Open', "issues?status=new&amp;status=open" %>
+                      </li>
+                       <% if current_user %>
+                      <li id="mine">
+                        <%= link_to 'My issues', "issues?responsible="+current_user.id.to_s  %> 
+                      </li>
+                      <li id="watching" hidden>
+                        <%= link_to 'Watching', "issues?watching="+current_user.id.to_s  %>
+                      </li>
+
+                     <% end %>
+                     
+            </ul>
+          </div>
+          <div class="issues-toolbar-right" >
+            <form class="aui top-label" id="search" action="/ASW_G13E/issue_tracker/issues">
+              <div class="field-group">
+                <label for="q">Search</label>
+                <input type="text" class="text" id="q" name="q" results="5" autosave="bitbucket-issues-filter" placeholder="Find issues">
+              </div>
+            </form>
+          </div>
+        </div>  
+        
+
         <div class="row">
         
           <p id="notice"><%= notice %></p>

@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20170418125215) do
     t.integer  "user_id"
     t.string   "kind"
     t.string   "priority"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "status",      default: 'new'
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.string   "status",      default: "new"
     t.integer  "votes",       default: 0
   end
 
