@@ -1,10 +1,11 @@
 class IssuesController < ApplicationController
   before_action :set_issue, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.all
+    @issues = Issue.order(sort_column+" "+sort_direction)
   end
 
   # GET /issues/1
@@ -71,4 +72,14 @@ class IssuesController < ApplicationController
     def issue_params
       params.require(:issue).permit(:title, :description, :user_id, :kind, :priority)
     end
+     private
+  
+    def sort_column
+      Issue.column_names.include?(params[:sort]) ? params[:sort] : "Title"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
+    
 end
