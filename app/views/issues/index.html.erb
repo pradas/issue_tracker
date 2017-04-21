@@ -105,6 +105,7 @@
                   <td><span class="glyphicon glyphicon-user"></span><text> </text><%= issue.user.name %></td>
                   <td><time datetime=issue.created_at ><%= distance_of_time_in_words( issue.created_at , Time.now)%> ago</time></td>
                   <td><time datetime=issue.updated_at ><%= distance_of_time_in_words( issue.updated_at , Time.now)%> ago</time></td>
+                  
                 </tr>
               <% end %>
             </tbody>
