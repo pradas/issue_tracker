@@ -278,9 +278,8 @@
   </div>
   <div class="col-md-1">
     <%= link_to 'New Issue', new_issue_path, {:class => "btn btn-default btn-block"} %>
-
   </div>
-
+</div>
 
 <div class "row">
   <div class="col-md-8">
@@ -302,46 +301,22 @@
         <li><a href="#">wontfix</a></li>
         <li><a href="#">closed</a></li>
       </ul>
-
-    </div>
-    <div class="col-md-1">
-      <%= link_to 'Open', edit_issue_path(@issue) , {:class => 'btn btn-primary'} %>
-    </div>
-    <div class="col-md-1">
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">new</a></li>
-          <li><a href="#">open</a></li>
-          <li><a href="#">on hold</a></li>
-          <li><a href="#">duplicate</a></li>
-          <li><a href="#">ivalid</a></li>
-          <li><a href="#">wontfix</a></li>
-          <li><a href="#">closed</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-1">
-     <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
-        <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Mark as spam</a></li>
-          <li><a href="#">Delete</a></li>
-          <li><a href="#">Atach files</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="col-md-1">
-      <%= link_to 'Edit', edit_issue_path(@issue), {:class => "btn btn-default btn-block"} %>
     </div>
   </div>
-
+  <div class="col-md-1">
+   <div class="dropdown">
+      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
+      <span class="caret"></span></button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Mark as spam</a></li>
+        <li><a href="#">Delete</a></li>
+        <li><a href="#">Atach files</a></li>
+      </ul>
+    </div>
+  </div>
   <div class="col-md-1">
     <%= link_to 'Edit', edit_issue_path(@issue), {:class => "btn btn-default btn-block"} %>
   </div>
 </div>
-
 
 </div>
