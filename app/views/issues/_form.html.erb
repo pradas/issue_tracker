@@ -51,7 +51,7 @@
     <div class="col-md-6">
         <%= f.label :kind%>
         <br>
-        <%= f.select :kind, options_for_select([1,2,3,4]) , {:class => "form-control"} %>
+        <%= f.select :kind, options_for_select(["bug","enhancement","proposal","task"]) , {:class => "form-control"} %>
 
     </div>
   </div>
@@ -64,25 +64,20 @@
     <div class="col-md-6">
       <%= f.label :priority %>
      <br>
-      <%= f.select :priority, options_for_select([1,2,3,4,5]) , {:class => "form-control"} %>
+      <%= f.select :priority, options_for_select(["trivial","minor","major","critical","blocker"]) , {:class => "form-control"} %>
     </div>
   </div>
   
   <br>
   
   <div class="row">
-<<<<<<< HEAD
     <div class="col-md-3">
     </div>
     <div class="col-md-1">
-=======
-    <div class="col-md-2">
->>>>>>> aa7e4be88ef34eccf91cf91dcdd8be9866adb8f1
+
       <%= f.submit 'Create Issue', :class => 'btn btn-primary' %>
     </div>
-    <div class="col-md-1">
-      <%= link_to ' Back', issues_path %>
-    </div>
+
   </div>
 <% end %>
 <div>

@@ -24,7 +24,7 @@
                       </li>
                        <% if current_user %>
                       <li id="mine">
-                        <%= link_to 'My issues', "issues?responsible="+current_user.id.to_s  %> 
+                        <%= byuser 'My issues', current_user.id  %> 
                       </li>
                       <li id="watching" hidden>
                         <%= link_to 'Watching', "issues?watching="+current_user.id.to_s  %>

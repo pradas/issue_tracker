@@ -104,7 +104,8 @@
 
   
     <a >
-      <span title=@issue.user.name ><%= @issue.user.name %></span>
+      <span title=@issue.user.name >
+         <%= byuser @issue.user.name, @issue.user.id  %></span>
     </a>
           created an issue
             <time><%= distance_of_time_in_words( @issue.created_at , Time.now) %> ago</time>

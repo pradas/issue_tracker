@@ -5,7 +5,11 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    @issues = Issue.order(sort_column+" "+sort_direction)
+    if params[:responsible] == nil
+      @issues = Issue.order(sort_column+" "+sort_direction)
+    else
+     @issues =Issue.where(["user_id = ?",params[:responsible]]).order(sort_column+" "+sort_direction)
+    end 
   end
 
   # GET /issues/1
@@ -81,5 +85,4 @@ class IssuesController < ApplicationController
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
-    
 end
