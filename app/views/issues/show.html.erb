@@ -1,71 +1,97 @@
 <p id="notice"><%= notice %></p>
 <div class="container">
-<div class "rowr">
-  <div class="col-md-11">
-    <p>
-    <%= @issue.title %>
-    </p>
-  </div>
-  <div class="col-md-1">
-    <%= link_to 'New Issue', new_issue_path, {:class => "btn btn-default btn-block"} %>
-  </div>
-</div>
-
-<div class "row">
-  <div class="col-md-8">
-    <p>
-    <strong><%= @issue.user.name %></strong>
-    </p>
-  </div>
-  <div class="col-md-1">
-    <%= link_to 'Open', edit_issue_path(@issue) , {:class => 'btn btn-primary'} %>
-  </div>
-  <div class="col-md-1">
-    <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="#">new</a></li>
-        <li><a href="#">open</a></li>
-        <li><a href="#">on hold</a></li>
-        <li><a href="#">duplicate</a></li>
-        <li><a href="#">ivalid</a></li>
-        <li><a href="#">wontfix</a></li>
-        <li><a href="#">closed</a></li>
-      </ul>
+  <div class "row">
+    <div class="col-md-11">
+      <p>
+      <%= @issue.title %> 
+      <% if @issue.status == "new" %>
+      <td><span class="label label-primary"><%= @issue.status %></span></td>
+      <% elsif @issue.status == "resolved" || @issue.status == "closed" %>
+      <td><span class="label label-success"><%= @issue.status %></span></td>
+      <% elsif @issue.status == "open" %>
+      <td><span class="label label-default"><%= @issue.status %></span></td>
+      <% elsif @issue.status == "on hold" %>
+      <td><span class="label label-warning"><%= @issue.status %></span></td>
+      <% elsif @issue.status == "invalid" || @issue.status == "wontfix" %>
+      <td><span class="label label-danger"><%= @issue.status %></span></td>
+      <% end %>
+      </p>
+    </div>
+    <div class="col-md-1">
+      <%= link_to 'New Issue', new_issue_path, {:class => "btn btn-default btn-block"} %>
     </div>
   </div>
-  <div class="col-md-1">
-   <div class="dropdown">
-      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
-      <span class="caret"></span></button>
-      <ul class="dropdown-menu">
-        <li><a href="#">Mark as spam</a></li>
-        <li><a href="#">Delete</a></li>
-        <li><a href="#">Atach files</a></li>
-      </ul>
+
+  <div class "row">
+    <div class="col-md-8">
+      <p>
+      <strong><%= @issue.user.name %></strong>
+      </p>
+    </div>
+    <div class="col-md-1">
+      <%= link_to 'Open', edit_issue_path(@issue) , {:class => 'btn btn-primary'} %>
+    </div>
+    <div class="col-md-1">
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">new</a></li>
+          <li><a href="#">open</a></li>
+          <li><a href="#">on hold</a></li>
+          <li><a href="#">duplicate</a></li>
+          <li><a href="#">ivalid</a></li>
+          <li><a href="#">wontfix</a></li>
+          <li><a href="#">closed</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-1">
+     <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu">
+          <li><a href="#">Mark as spam</a></li>
+          <li><a href="#">Delete</a></li>
+          <li><a href="#">Atach files</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-1">
+      <%= link_to 'Edit', edit_issue_path(@issue), {:class => "btn btn-default btn-block"} %>
     </div>
   </div>
-  <div class="col-md-1">
-    <%= link_to 'Edit', edit_issue_path(@issue), {:class => "btn btn-default btn-block"} %>
-  </div>
-</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @issue.description %>
-</p>
-<p>
-  <strong>Kind:</strong>
-  <%= @issue.kind %>
-</p>
-
-<p>
-  <strong>Priority:</strong>
-  <%= @issue.priority %>
-</p>
-<div class="col-md-1">
+  <div class="row">
+    <div class="col-md-8">
+      <p>
+      <strong>Description:</strong>
+      <%= @issue.description %>
+      </p>
+      <p>
+      <strong>Kind:</strong>
+      <%= @issue.kind %>
+      </p>
+      
+      <p>
+      <strong>Priority:</strong>
+      <%= @issue.priority %>
+      </p>
+      <div class="col-md-1">
       <%= link_to 'Back', issues_path %>
+      </div>
     </div>
-
+    
+    <div class="col-md-4">
+      <div class="">
+        <p>ola k ase</p>
+        <p>ola k ase</p>
+        <p>ola k ase</p>
+        <p>ola k ase</p>
+        <p>ola k ase</p>
+      </div>  
+    </div>
+    
+    
+  </div>
 </div>
