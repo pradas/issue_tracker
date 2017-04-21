@@ -1,4 +1,5 @@
-<%= form_for(issue) do |f| %>
+<div class="container">
+  <%= form_for(issue) do |f| %>
   <% if issue.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
@@ -47,7 +48,7 @@
   </div>
 
   <div class="row">
-    <div class="col-md-1">
+    <div class="col-md-2">
       <%= f.submit 'Create Issue', :class => 'btn btn-primary' %>
     </div>
     <div class="col-md-1">
@@ -55,3 +56,4 @@
     </div>
   </div>
 <% end %>
+<div>
