@@ -10,6 +10,41 @@
             <%= link_to 'New Issue', new_issue_path, {:class => "btn btn-default btn-block"} %>
           </div>
         </div>
+
+        <div id="issues-toolbar" class="clearfix">
+          <div class="filter-container">
+            <p class="filter-label">Filters:</p>
+            <ul class="filter-status">
+                      
+                      <li id="all">
+                        <%= link_to 'All', "issues" %>
+                      </li>
+                      <li id="open">
+                        <%= link_to 'Open', "issues?status=new&amp;status=open" %>
+                      </li>
+                       <% if current_user %>
+                      <li id="mine">
+                        <%= link_to 'My issues', "issues?responsible="+current_user.id.to_s  %> 
+                      </li>
+                      <li id="watching" hidden>
+                        <%= link_to 'Watching', "issues?watching="+current_user.id.to_s  %>
+                      </li>
+
+                     <% end %>
+                     
+            </ul>
+          </div>
+          <div class="issues-toolbar-right" hidden >
+            <form class="aui top-label" id="search" action="/ASW_G13E/issue_tracker/issues">
+              <div class="field-group">
+                <label for="q">Search</label>
+                <input type="text" class="text" id="q" name="q" results="5" autosave="bitbucket-issues-filter" placeholder="Find issues">
+              </div>
+            </form>
+          </div>
+        </div>  
+        
+
         <div class="row">
         
           <p id="notice"><%= notice %></p>
@@ -17,14 +52,14 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <th>Title</th>
-                <th>T</th>
-                <th>P</th>
-                <th>Status</th>
-                <th>Votes</th>
-                <th>Assignee</th>
-                <th>Created</th>
-                <th>Updated</th>
+                <th><%= sortable "Title"%></th>
+                <th><%= sortable "kind","T"  %></th>
+                <th><%= sortable "priority","P"%></th>
+                <th><%= sortable "Status"%></th>
+                <th><%= sortable "Votes"%></th>
+                <th><%= sortable "user.name","Assignee"%></th>
+                <th><%= sortable "created_at","Created" %></th>
+                <th><%= sortable "updated_at","Updated" %></th>
               </tr>
             </thead>
           
@@ -32,13 +67,44 @@
               <% @issues.each do |issue| %>
                 <tr>
                   <td><%= link_to issue.title, issue %></td>
-                  <td><%= issue.kind %></td>
-                  <td><%= issue.priority %></td>
+                  <% if issue.kind == "task" %>
+                  <td><span class="glyphicon glyphicon-check"></span></td>
+                  <% elsif issue.kind == "bug" %>
+                  <td><span class="glyphicon glyphicon-remove"></span></td>
+                  <% elsif issue.kind == "enhancement" %>
+                  <td><span class="glyphicon glyphicon-arrow-up"></span></td>
+                  <% elsif issue.kind == "proposal" %>
+                  <td><span class="glyphicon glyphicon-certificate"></span></td>
+                  <% end %>
+                  
+                  <% if issue.priority == "minor" %>
+                  <td><span class="glyphicon glyphicon-step-backward"></span></td>
+                  <% elsif issue.kind == "major" %>
+                  <td><span class="glyphicon glyphicon-forward"></span></td>
+                  <% elsif issue.kind == "trivial" %>
+                  <td><span class="glyphicon glyphicon-fast-backward"></span></td>
+                  <% elsif issue.kind == "critical" %>
+                  <td><span class="glyphicon glyphicon-fast-forward"></span></td>
+                  <% elsif issue.kind == "blocker" %>
+                  <td><span class="glyphicon glyphicon-ban-circle"></span></td>
+                  <% end %>
+                  
+                  <% if issue.status == "new" %>
+                  <td><span class="label label-primary"><%= issue.status %></span></td>
+                  <% elsif issue.status == "resolved" || issue.status == "closed" %>
                   <td><span class="label label-success"><%= issue.status %></span></td>
+                  <% elsif issue.status == "open" %>
+                  <td><span class="label label-default"><%= issue.status %></span></td>
+                  <% elsif issue.status == "on hold" %>
+                  <td><span class="label label-warning"><%= issue.status %></span></td>
+                  <% elsif issue.status == "invalid" || issue.status == "wontfix" %>
+                  <td><span class="label label-danger"><%= issue.status %></span></td>
+                  <% end %>
+                  
                   <td><span class="badge"><%= issue.votes %></span></td>
-                  <td><%= issue.user.name %></td>
-                  <td><%= issue.created_at %></td>
-                  <td><%= issue.updated_at %></td>
+                  <td><span class="glyphicon glyphicon-user"></span><text> </text><%= issue.user.name %></td>
+                  <td><time datetime=issue.created_at ><%= distance_of_time_in_words( issue.created_at , Time.now)%> ago</time></td>
+                  <td><time datetime=issue.updated_at ><%= distance_of_time_in_words( issue.updated_at , Time.now)%> ago</time></td>
                 </tr>
               <% end %>
             </tbody>

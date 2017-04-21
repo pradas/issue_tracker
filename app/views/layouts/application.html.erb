@@ -4,10 +4,12 @@
     <title>Issues Tracker</title>
     <%= csrf_meta_tags %>
 
-    <!-- #stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all',
+                                              'data-turbolinks-track': 'reload' %>
     <!-- #javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     
     <!-- Latest compiled and minified CSS -->
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
     <!-- jQuery library -->
@@ -16,10 +18,29 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-
+<nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><%= link_to 'Issues Tracker', issues_path %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right"> 
+           
+          <% if current_user %>
+            <li><a><strong><%= current_user.name %></strong></a></li>
+            <li>  <%= link_to "Sign out", signout_path, id: "sign_out" %></li>
+          <% else %>
+             <li> <%= link_to "Sign in with Google", "/auth/google_oauth2", id: "sign_in" %></li>
+          <% end %>
+</ul>
+         
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
   <body>
-    <div id="app">
-      <%= yield %>
-    </div>
+    <%= yield %>
+
   </body>
 </html>
