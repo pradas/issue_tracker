@@ -3,10 +3,10 @@
     <div class="col-md-10 col-md-offset-1">
       <div class="panel">
         <div class="row">
-          <div class="col-md-10">
+          <div class="col-md-10 col-sm-10">
             <h1>Issues</h1>
           </div>
-          <div class="col-md-2">
+          <div class="col-md-2 col-sm-2">
             <%= link_to 'New Issue', new_issue_path, {:class => "btn btn-default btn-block"} %>
           </div>
         </div>
@@ -49,7 +49,7 @@
         
           <p id="notice"><%= notice %></p>
           
-          <table class="table table-hover">
+          <table class="table table-hover pretty">
             <thead>
               <tr>
                 <th><%= sortable "Title"%></th>
