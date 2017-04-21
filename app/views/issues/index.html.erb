@@ -73,19 +73,19 @@
                   <td><span class="glyphicon glyphicon-remove"></span></td>
                   <% elsif issue.kind == "enhancement" %>
                   <td><span class="glyphicon glyphicon-arrow-up"></span></td>
-                  <% elsif issue.kind == "proposal" %>
+                  <% else issue.kind == "proposal" %>
                   <td><span class="glyphicon glyphicon-certificate"></span></td>
                   <% end %>
                   
                   <% if issue.priority == "minor" %>
                   <td><span class="glyphicon glyphicon-step-backward"></span></td>
-                  <% elsif issue.kind == "major" %>
+                  <% elsif issue.priority == "major" %>
                   <td><span class="glyphicon glyphicon-forward"></span></td>
-                  <% elsif issue.kind == "trivial" %>
+                  <% elsif issue.priority == "trivial" %>
                   <td><span class="glyphicon glyphicon-fast-backward"></span></td>
-                  <% elsif issue.kind == "critical" %>
+                  <% elsif issue.priority == "critical" %>
                   <td><span class="glyphicon glyphicon-fast-forward"></span></td>
-                  <% elsif issue.kind == "blocker" %>
+                  <% else issue.priority == "blocker" %>
                   <td><span class="glyphicon glyphicon-ban-circle"></span></td>
                   <% end %>
                   
@@ -97,7 +97,7 @@
                   <td><span class="label label-default"><%= issue.status %></span></td>
                   <% elsif issue.status == "on hold" %>
                   <td><span class="label label-warning"><%= issue.status %></span></td>
-                  <% elsif issue.status == "invalid" || issue.status == "wontfix" %>
+                  <% else issue.status == "invalid" || issue.status == "wontfix" %>
                   <td><span class="label label-danger"><%= issue.status %></span></td>
                   <% end %>
                   
