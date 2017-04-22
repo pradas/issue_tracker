@@ -12,7 +12,7 @@
       </div>
     <% end %>
   
-  <div class = "row">
+  <div class = "row formfield">
     <label class="col-sm-3">
       <%= f.label :title %>
     </label>
@@ -22,7 +22,7 @@
   </div>
   <br>
   
-  <div class = "row">
+  <div class = "row formfield">
     <label class="col-sm-3">
       <%= f.label :description %>
     </label>
@@ -31,24 +31,24 @@
     </label>
   </div>
 
-  <div class = "row">
-    <label class="col-sm-3">
+  <div class = "row formfield">
+    <label class="col-sm-3 movedown">
       <%= f.label :user_id %>
     </label>
     <label class ="col-sm-1">
       <%= f.collection_select :user_id, User.all, :id, :name %>
     </label>
   </div>
-  <div class = "row">
-    <label class="col-sm-3">
+  <div class = "row formfield">
+    <label class="col-sm-3 movedown">
       <%= f.label :kind%>
     </label>
     <label class ="col-sm-1">
       <%= f.select :kind, options_for_select(["bug","enhancement","proposal","task"]) , {:class => "form-control"} %>
     </label>
   </div>
-  <div class = "row">
-    <label class="col-sm-3">
+  <div class = "row formfield">
+    <label class="col-sm-3 movedown">
       <%= f.label :priority %>
     </label>
     <label class ="col-sm-1">
@@ -56,11 +56,11 @@
     </label>
   </div>
 
-  <div class="row">
+  <div class="row formfield">
     <div class="col-sm-3">
     </div>
     <div class="col-sm-1">
-      <%= f.submit 'Create Issue', :class => 'btn btn-primary' %>
+      <%= f.submit 'Create Issue', :class => 'btn btn-primary bold-text' %>
     </div>
   </div>
   <% end %>

@@ -116,10 +116,8 @@ form.aui label, form.aui legend {
 }
 
 label{
-    padding: 5px 0 0;
     position: relative;
     text-align: right;
-    width: 130px;
     word-wrap: break-word;
 }
 
@@ -240,4 +238,18 @@ a:active {color:#000099  !important;}
 }
 #username-navbar:hover{
     color:grey !important;
+}
+
+.formfield, .movedown{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+select {
+    height: 30px;
+    width: 250px;
+}
+
+.bold-text{
+    font-weight: bold !important;
 }
