@@ -52,7 +52,7 @@
           <table class="table table-hover pretty">
             <thead>
               <tr>
-                <th><%= sortable "Title"%></th>
+                <th class="col-md-5"><%= sortable "Title"%></th>
                 <th><%= sortable "kind","T"  %></th>
                 <th><%= sortable "priority","P"%></th>
                 <th><%= sortable "Status"%></th>
@@ -66,15 +66,14 @@
             <tbody>
               <% @issues.each do |issue| %>
                 <tr>
-                  <td><%= link_to issue.title, issue %></td>
+                  <td ><%= link_to issue.title, issue %></td>
                   <td><%= bykind issue.kind%></td>
                   <td><%= byprior issue.priority%></td>
                   <td><%= bystatus issue.status%></td>
                   <td><span class="badge"><%= issue.votes %></span></td>
-                  <td><span class="glyphicon glyphicon-user"></span><text> </text><%= issue.user.name %></td>
-                  <td><time datetime=issue.created_at ><%= distance_of_time_in_words( issue.created_at , Time.now)%> ago</time></td>
-                  <td><time datetime=issue.updated_at ><%= distance_of_time_in_words( issue.updated_at , Time.now)%> ago</time></td>
-                  
+                  <td class="username-td"><span class="glyphicon glyphicon-user"></span><%= issue.user.name %></td>
+                  <td><time datetime=issue.created_at ><%= remove_unwanted_words distance_of_time_in_words( issue.created_at , Time.now)%> ago</time></td>
+                  <td><time datetime=issue.updated_at ><%= remove_unwanted_words distance_of_time_in_words( issue.updated_at , Time.now)%> ago</time></td>
                 </tr>
               <% end %>
             </tbody>

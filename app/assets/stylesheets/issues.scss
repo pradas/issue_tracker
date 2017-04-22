@@ -190,3 +190,10 @@ a {color:grey !important;}      /* unvisited link */
 a:hover {color: black !important;}  /* mouse over link */
 a:active {color:#0000FF  !important;} 
 
+.username-td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 130px;
+}
+

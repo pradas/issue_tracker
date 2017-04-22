@@ -52,6 +52,14 @@ module ApplicationHelper
         icon ='danger'
       end 
       link_to '<span class="label label-'.html_safe+icon.html_safe+'"> '.html_safe+status_req+'</span>'.html_safe, {:controller=>"/issues",:status => status_req}
+    end
+    
+    def remove_unwanted_words string
+      bad_words = ["less than", "about"]
       
+      bad_words.each do |bad|
+        string.gsub!(bad + " ", '')
+      end
+      return string
     end
 end
