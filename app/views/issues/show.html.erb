@@ -56,32 +56,25 @@
   </div>
   <div class="row">
     <div class="col-md-8">
-      <div class="aui-group">
-        <div class="aui-item">
-          <div id="issue-main-content">
-            <h1 id="issue-title"><%= @issue.title %></h1>
-            <div class="issue-author">
-              <a>
-                <span title=@issue.user.name >
-                <%= byuser @issue.user.name, @issue.user.id  %></span>
-              </a>
-              created an issue
-              <time><%= distance_of_time_in_words( @issue.created_at , Time.now) %> ago</time>
-            </div>
-            <div class="issue-description wiki-content">
-                <p><em>
-                  <% if @issue.description %>
-                    <%= @issue.description %>
-                  <% else %>
-                    No description provided.
-                  <% end %>
-                </em></p>
-            </div>
-            <div class="attachments" id="attachments">
-            </div>
-          </div>
-        </div>
+      <h3 id="issue-title"><%= @issue.title %></h3>
+      <div class="issue-author">
+        <a>
+          <span title=@issue.user.name >
+          <%= byuser @issue.user.name, @issue.user.id  %></span>
+        </a>
+        created an issue
+        <time><%= distance_of_time_in_words( @issue.created_at , Time.now) %> ago</time>
       </div>
+      <div class="issue-description wiki-content">
+          <p>
+            <% if @issue.description %>
+              <%= @issue.description %>
+            <% else %>
+              No description provided.
+            <% end %>
+          </p>
+      </div>
+      <div class="attachments" id="attachments"></div>
     </div>
     <div class="col-md-4">
       <div class="panel panel-default col-offset-8">
