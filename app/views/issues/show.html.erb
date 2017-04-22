@@ -52,15 +52,15 @@
         <%= link_to 'Edit', edit_issue_path(@issue), {:class => "btn btn-default btn-block"} %>
         </div>
       </div>
-          
-  
-      </div>
-      <div class="aui-group">
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="aui-group">
         <div class="aui-item">
           <div id="issue-main-content">
             <h1 id="issue-title"><%= @issue.title %></h1>
             <div class="issue-author">
-              <a >
+              <a>
                 <span title=@issue.user.name >
                 <%= byuser @issue.user.name, @issue.user.id  %></span>
               </a>
@@ -81,8 +81,62 @@
               
             </div>
           </div>
+        </div>
+      </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-default col-offset-8">
+          <div class="panel-body">      
+            <div class="aui-item sidebar">
+              <div class="issue-attrs">
+              <dl>
+                <dt>Assignee</dt>
+                <dd class="assignee with-icon">
+                    <%= byuser @issue.user.name, @issue.user.id  %>
+                </dd>
+              </dl>
+              <dl>
+                <dt>Type</dt>
+                <dd class="type with-icon">
+                  <%= bykind @issue.kind,true %>
+                </dd>
+              </dl>
+              <dl>
+                <dt>Priority</dt>
+                <dd class="priority with-icon">
+                  <%= byprior @issue.priority, true%>
+                </dd>
+              </dl>
+              <dl>
+                <dt>Status</dt>
+                <dd class="status">
+                  <%= bystatus @issue.status,true%>
+                </dd>
+              </dl>
+              <dl>
+                <dt>Votes</dt>
+                <dd class="votes">
+                  <span id="issue-vote-count" class="aui-badge">0</span>
+                    <a href="/issue/6/vote" id="issue-vote-trigger" class="vote-issue" data-vote-text="Vote for this issue" data-unvote-text="Remove vote" data-voted="false" title="Vote for this issue"> Vote for this issue
+                    </a>
+                </dd>
+              </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
   
-          <div id="issues-comments-container" hidden>
+  
+  
+  
+  
+  
+  
+  <div id="issues-comments-container" hidden>
             <h2>Comments (1)</h2>
             <ol id="issues-comments" class="comments-list commentable">
               <li class="issue-comment comment" id="comment-36039918">
@@ -141,50 +195,3 @@
               </li>
             </ol>
           </div>
-        </div>
-        <div class="panel panel-default col-offset-8">
-          <div class="panel-body">      
-            <div class="aui-item sidebar">
-              <div class="issue-attrs">
-              <dl>
-                <dt>Assignee</dt>
-                <dd class="assignee with-icon">
-                    <%= byuser @issue.user.name, @issue.user.id  %>
-                </dd>
-              </dl>
-              <dl>
-                <dt>Type</dt>
-                <dd class="type with-icon">
-                  <%= bykind @issue.kind,true %>
-                </dd>
-              </dl>
-              <dl>
-                <dt>Priority</dt>
-                <dd class="priority with-icon">
-                  <%= byprior @issue.priority, true%>
-                </dd>
-              </dl>
-              <dl>
-                <dt>Status</dt>
-                <dd class="status">
-                  <%= bystatus @issue.status,true%>
-                </dd>
-              </dl>
-              <dl>
-                <dt>Votes</dt>
-                <dd class="votes">
-                  <span id="issue-vote-count" class="aui-badge">0</span>
-                  
-                    <a href="/issue/6/vote" id="issue-vote-trigger" class="vote-issue" data-vote-text="Vote for this issue" data-unvote-text="Remove vote" data-voted="false" title="Vote for this issue"> Vote for this issue
-                       
-                    </a>
-                  
-                </dd>
-              </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
