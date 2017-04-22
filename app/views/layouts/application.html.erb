@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     
     <!-- jQuery library -->
-<script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     
     <!-- Latest compiled JavaScript -->
@@ -27,7 +26,7 @@
         <ul class="nav navbar-nav">
           <li class="active"><%= link_to 'Issues Tracker', issues_path %>
         </ul>
-        <ul class="nav navbar-nav navbar-right"> 
+        <ul class="nav navbar-nav navbar-right">
           <% if current_user %>
             <li><a><strong><%= current_user.name %></strong></a></li>
             <li>  <%= link_to "Sign out", signout_path, id: "sign_out" %></li>
@@ -41,8 +40,6 @@
   </nav>
   <body>
     <%= yield %>
-    <script>
-        CKEDITOR.replace( 'text_area1' );
-    </script>
+
   </body>
 </html>
