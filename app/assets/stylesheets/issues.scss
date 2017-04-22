@@ -186,5 +186,7 @@ a, u {
     text-decoration: none  !important;
 }
 
-
+a {color:grey !important;}      /* unvisited link */
+a:hover {color: black !important;}  /* mouse over link */
+a:active {color:#0000FF  !important;} 
 
