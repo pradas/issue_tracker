@@ -182,7 +182,9 @@ input:not([type]), input[type="email" i], input[type="number" i], input[type="pa
   background-image: url(/public/down_arrow.gif);
 }
 
-
+a, u {
+    text-decoration: none  !important;
+}
 
 
 
