@@ -5,11 +5,20 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
-    if params[:responsible] == nil
-      @issues = Issue.order(sort_column+" "+sort_direction)
+    if params[:responsible] != nil
+      @issues =Issue.where(["user_id = ?",params[:responsible]]).order(sort_column+" "+sort_direction)
     else
-     @issues =Issue.where(["user_id = ?",params[:responsible]]).order(sort_column+" "+sort_direction)
+      @issues = Issue.order(sort_column+" "+sort_direction)
     end 
+    if  params[:kind] != nil
+      @issues = @issues.where(["kind = ?",params[:kind]]).order(sort_column+" "+sort_direction)
+    end
+    if  params[:status] != nil
+      @issues = @issues.where(["status = ?",params[:status]]).order(sort_column+" "+sort_direction)
+    end
+    if  params[:priority] != nil
+      @issues = @issues.where(["priority = ?",params[:priority]]).order(sort_column+" "+sort_direction)
+    end
   end
 
   # GET /issues/1
