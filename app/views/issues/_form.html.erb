@@ -1,89 +1,68 @@
-<form class ="form-horizontal">
-  <div class="container">
-    <%= form_for(issue) do |f| %>
+<div class="container">
+  <%= form_for(issue) do |f| %>
     <% if issue.errors.any? %>
       <div id="error_explanation">
         <h2><%= pluralize(issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
-  
+        
         <ul>
-        <% issue.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
+          <% issue.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
         </ul>
       </div>
     <% end %>
-    
-    <div class = "form-group">
-      <label class="control-label col-sm-3">
-          <%= f.label :title %>
-      </label>
-      <label class ="control-label col-md-6">
-          <%= f.text_field :title, {:class => "form-control"} %>
-      </label>
-         
-      
-    </div>
-    
-    <br>
   
-    <div class = "form-group">
-      <label class="control-label col-sm-3">
-        <%= f.label :description %>
-      </label>
-      <label class ="control-label col-md-6">
-        <%= f.text_area :description,  {:class => "form-control"} %>
-      </label>
-    </div>
-    
-    <br>
-    
-    <div class = "form-group">
-      <label class="control-label col-sm-3">
-        <%= f.label :user_id %>
-      </label>
-      <label class ="control-label col-md-4">
-        <%= f.number_field :user_id, {:class => "form-control"} %>
-      </label>
-    </div>
-    
-    
-        
-       
-     
-    
-    <br>
-    
-    <div class = "form-group">
-      <label class="control-label col-sm-3">
-        <%= f.label :kind%>
-      </label>
-      <label class ="control-label col-sm-1">
-        <%= f.select :kind, options_for_select(["bug","enhancement","proposal","task"]) , {:class => "form-control"} %>
-      </label>
-    </div>
+  <div class = "row">
+    <label class="col-sm-3">
+      <%= f.label :title %>
+    </label>
+    <label class ="col-sm-6">
+      <%= f.text_field :title, {:class => "form-control"} %>
+    </label>
+  </div>
+  <br>
+  
+  <div class = "row">
+    <label class="col-sm-3">
+      <%= f.label :description %>
+    </label>
+    <label class ="col-sm-6">
+      <%= f.text_area :description,  {:class => "form-control desc-text_area"} %>
+    </label>
+  </div>
 
-    <br>
-    
-    <div class = "form-group">
-      <label class="control-label col-sm-3">
-        <%= f.label :priority %>
-      </label>
-      <label class ="control-label col-sm-1">
-        <%= f.select :priority, options_for_select(["trivial","minor","major","critical","blocker"]) , {:class => "form-control"} %>
-      </label>
+  <div class = "row">
+    <label class="col-sm-3">
+      <%= f.label :user_id %>
+    </label>
+    <label class ="col-sm-1">
+      <%= f.collection_select :user_id, User.all, :id, :name %>
+    </label>
+  </div>
+  <div class = "row">
+    <label class="col-sm-3">
+      <%= f.label :kind%>
+    </label>
+    <label class ="col-sm-1">
+      <%= f.select :kind, options_for_select(["bug","enhancement","proposal","task"]) , {:class => "form-control"} %>
+    </label>
+  </div>
+  <div class = "row">
+    <label class="col-sm-3">
+      <%= f.label :priority %>
+    </label>
+    <label class ="col-sm-1">
+      <%= f.select :priority, options_for_select(["trivial","minor","major","critical","blocker"]) , {:class => "form-control"} %>
+    </label>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-3">
     </div>
-    
-    <br>
-    
-    <div class="row">
-      <div class="col-md-3">
-      </div>
-      <div class="col-md-1">
-  
-        <%= f.submit 'Create Issue', :class => 'btn btn-primary' %>
-      </div>
-  
+    <div class="col-sm-1">
+      <%= f.submit 'Create Issue', :class => 'btn btn-primary' %>
+    </div>
   </div>
   <% end %>
-  <div>
-</form>
+</div>  
+  

@@ -116,8 +116,6 @@ form.aui label, form.aui legend {
 }
 
 label{
-    float: left;
-    margin-left: -145px;
     padding: 5px 0 0;
     position: relative;
     text-align: right;
@@ -125,6 +123,10 @@ label{
     word-wrap: break-word;
 }
 
+
+.desc-text_area{
+    min-height: 200px !important;
+}
 
 
 #issues-toolbar #search input {
