@@ -13,7 +13,6 @@
       <a href="/issues?status="@issue.status>
         <span class="label label-success"><%= @issue.status %></span>
       </a>
-      
         <div class="issue-toolbar" hidden>
           
             <div id="workflow-dropdown" class="aui-dropdown2 aui-style-default aui-layer" resolved="" aria-hidden="true">
@@ -28,14 +27,6 @@
                 <li data-transition-to="8" title="Close issue"><a>closed</a></li>
               </ul>
             </div>
-            
-    
-    
-  
-            
-    
-    
-  
             <div id="issue-actions" class="aui-buttons">
               
                 <a id="change-state" class="aui-button aui-button-primary" data-transition-to="3" href="#resolve" title="Resolve issue" resolved="">
@@ -198,15 +189,7 @@
     <div class="mask"></div>
   </form>
 </li></ol>
-          
-            
-            
-              
-    
-    
-  
-            
-          
+ 
         </div>
       </div>
       <div class="panel panel-default col-offset-8">
@@ -225,27 +208,19 @@
             <dl>
               <dt>Type</dt>
               <dd class="type with-icon">
-                <%= link_to "/issues?kind="+@issue.kind.to_s do %>
-                  <span class="icon icon-task"></span>
-                  <%=@issue.kind  %>
-                <% end %>
+                <%= bykind @issue.kind,true %>
               </dd>
             </dl>
             <dl>
               <dt>Priority</dt>
               <dd class="priority with-icon">
-                <%= link_to "/issues?priority="+@issue.priority.to_s do %>
-                  <span class="icon icon-major"></span>
-                  <%=@issue.priority  %>
-                <% end %>
+                <%= byprior @issue.priority, true%>
               </dd>
             </dl>
             <dl>
               <dt>Status</dt>
               <dd class="status">
-                <%= link_to "/issues?status="+@issue.status do %>
-                  <%= @issue.status %>
-                <% end %>
+                <%= bystatus @issue.status,true%>
               </dd>
             </dl>
             

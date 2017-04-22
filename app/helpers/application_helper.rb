@@ -9,7 +9,7 @@ module ApplicationHelper
       link_to title, {:controller=>"/issues",:responsible => user_id}
     end
     
-    def bykind(kind_req)
+    def bykind(kind_req,text=nil)
       if kind_req == "task" 
         icon = 'check'
       elsif kind_req == "bug" 
@@ -19,12 +19,13 @@ module ApplicationHelper
       else
         icon = 'certificate'
       end
-      link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe, {:controller=>"/issues",:kind => kind_req}
+      tag = text == true ? " "+kind_req : ''
+      link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, {:controller=>"/issues",:kind => kind_req}
     end
       
       
       
-    def byprior(prior_req)
+    def byprior(prior_req,text=nil)
       if prior_req == "minor"
         icon = 'step-backward'
       elsif prior_req == "major"
@@ -36,10 +37,11 @@ module ApplicationHelper
       else
         icon ='ban-circle'
       end
-      link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe, {:controller=>"/issues",:priority => prior_req}
+      tag = text == true ? " "+prior_req : ''
+      link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, {:controller=>"/issues",:priority => prior_req}
     end
     
-    def bystatus(status_req)
+    def bystatus(status_req,text=nil)
       if status_req == "new" 
         icon ='primary'
       elsif status_req == "resolved" || status_req == "closed" 
@@ -51,7 +53,8 @@ module ApplicationHelper
       else  
         icon ='danger'
       end 
-      link_to '<span class="label label-'.html_safe+icon.html_safe+'"> '.html_safe+status_req+'</span>'.html_safe, {:controller=>"/issues",:status => status_req}
+      tag = text == true ? " "+status_req : ''
+      link_to '<span class="label label-'.html_safe+icon.html_safe+'"> '.html_safe+status_req+'</span>'.html_safe+tag.html_safe, {:controller=>"/issues",:status => status_req}
     end
     
     def remove_unwanted_words string
