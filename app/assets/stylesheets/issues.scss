@@ -192,13 +192,19 @@ tr>th a{
 
 a {color:grey !important;}      /* unvisited link */
 a:hover {color: black !important;}  /* mouse over link */
-a:active {color:#0000FF  !important;} 
+a:active {color:#000099  !important;} 
 
+.not-grey {color:white !important;}
+.not-grey:hover {color:white !important;} 
 
 .username-td {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 130px;
+}
+
+.panel {
+    margin-top : 30px;
 }
 
