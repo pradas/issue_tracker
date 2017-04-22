@@ -175,10 +175,7 @@
               <dl>
                 <dt>Assignee</dt>
                 <dd class="assignee with-icon">
-                  
-                    <%= link_to "issues?responsible="+@issue.user.id.to_s do  %> 
-                      <%= @issue.user.name %>
-                    <% end %>
+                    <%= byuser @issue.user.name, @issue.user.id  %>
                 </dd>
               </dl>
               <dl>
