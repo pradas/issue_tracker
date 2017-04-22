@@ -115,6 +115,15 @@ form.aui label, form.aui legend {
     color: #707070;
 }
 
+label{
+    float: left;
+    margin-left: -145px;
+    padding: 5px 0 0;
+    position: relative;
+    text-align: right;
+    width: 130px;
+    word-wrap: break-word;
+}
 
 
 
@@ -195,11 +204,6 @@ a:hover {color: black !important;}  /* mouse over link */
 a:active {color:#000099  !important;} 
 
 .not-grey {color:white !important;}
-
-.text-black {
-    color:black !important;
-    text-align: left !important;
-}
 .not-grey:hover {color:white !important;} 
 
 .username-td {
@@ -213,3 +217,25 @@ a:active {color:#000099  !important;}
     margin-top : 30px;
 }
 
+.dropdown-button {
+    background-color: white;
+    border: none;
+    padding-top: 3px;
+    padding-right: 20px;
+    padding-bottom: 3px;
+    padding-left: 20px;
+    width:100%;
+    color:grey;
+}
+
+.dropdown-button:hover {
+    background-color: #F5F5F5;
+    color:black;
+}
+
+.navbar .nav a:hover{
+    color:white !important;
+}
+#username-navbar:hover{
+    color:grey !important;
+}

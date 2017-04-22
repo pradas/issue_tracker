@@ -21,13 +21,13 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-        <li><%= link_to 'new', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'open', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'on hold', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'duplicate', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'invalid', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'wontfix', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'closed', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= button_to 'new', edit_issue_path(@issue) ,{:class => 'dropdown-button text-left'} %></li>
+        <li><%= button_to 'open', edit_issue_path(@issue) ,{:class => 'dropdown-button text-left'}%></li>
+        <li><%= button_to 'on hold', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+        <li><%= button_to 'duplicate', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+        <li><%= button_to 'invalid', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+        <li><%= button_to 'wontfix', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+        <li><%= button_to 'closed', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
         </ul>
       </div>
     </div>
@@ -36,9 +36,10 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-        <li><%= link_to 'Mark as spam', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'Delete', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
-        <li><%= link_to 'Attach files', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+
+        <li><%= button_to 'Mark as spam', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+        <li><%=button_to "Delete",issue_path(@issue.id), :method => :delete, :class => "delete dropdown-button text-left", :confirm => "Are you sure ?"%></li>
+        <li><%= button_to 'Attach files', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
         </ul>
       </div>
     </div>
