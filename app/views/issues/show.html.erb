@@ -29,13 +29,13 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-        <li><a href="#">new</a></li>
-        <li><a href="#">open</a></li>
-        <li><a href="#">on hold</a></li>
-        <li><a href="#">duplicate</a></li>
-        <li><a href="#">ivalid</a></li>
-        <li><a href="#">wontfix</a></li>
-        <li><a href="#">closed</a></li>
+        <li><%= link_to 'new', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'open', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'on hold', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'duplicate', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'invalid', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'wontfix', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'closed', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
         </ul>
       </div>
     </div>
@@ -44,9 +44,9 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-        <li><a href="#">Mark as spam</a></li>
-        <li><a href="#">Delete</a></li>
-        <li><a href="#">Atach files</a></li>
+        <li><%= link_to 'Mark as spam', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'Delete', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
+        <li><%= link_to 'Attach files', edit_issue_path(@issue) , {:class => 'text-black btn btn-block'} %></li>
         </ul>
       </div>
     </div>
