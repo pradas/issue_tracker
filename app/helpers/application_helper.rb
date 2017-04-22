@@ -3,7 +3,7 @@ module ApplicationHelper
       title ||= column.titleize
       css_class = column == sort_column ? "current #{sort_direction}" : nil
       direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-      link_to title, {:sort => column, :direction => direction}, {:class => css_class}
+      link_to title, params.permit(:user_id,:status,:priority,:kind).merge(:sort => column, :direction => direction), {:class => css_class}
     end
     def byuser(title, user_id)
       link_to title, {:controller=>"/issues",:responsible => user_id}
@@ -67,6 +67,23 @@ module ApplicationHelper
       end
     end
     
+    def criteria_filter
+      content = ""
+      if params[:kind] != nil
+        content += "<b>kind :</b>"+ params[:kind]+" "
+      end
+      if params[:priority] != nil
+        content += "<b>priority :</b>"+ params[:priority]+" "
+      end
+      if params[:status] != nil
+        content += "<b>status :</b>"+ params[:status]+" "
+      end
+      if params[:responsible] != nil
+        content += "<b>responsible (id) :</b>"+ params[:responsible]
+      end
+      content.html_safe
+    end
+    
     def remove_unwanted_words string
       bad_words = ["less than", "about"]
       
@@ -75,4 +92,5 @@ module ApplicationHelper
       end
       return string
     end
+    
 end
