@@ -92,13 +92,13 @@
             </dl>
             <dl>
               <dt>Votes</dt>
-                <span id="issue-vote-count" class="badge"><%= @issue.votes %></span>
-                  <a href="/issue/6/vote" title="Vote for this issue"> Vote for this issue </a>
+                <span class="badge"><%= @issue.votes %></span>
+                  <%= update_issue_field "votes",@issue.votes+1,'btn btn-link','Vote for this issue' %>
             </dl>
             <dl>
               <dt>Watchers</dt>
-              <span id="issue-vote-count" class="badge"><%= @issue.watchers %></span>
-              <a href="/issue/6/watch" title="Watch this issue"> Watch this issue </a>
+              <span class="badge"><%= @issue.watchers %></span>
+              <%= update_issue_field "watchers",@issue.watchers+1,'btn btn-link','Watch this issue' %>
             </dl>
             </div>
           </div>
