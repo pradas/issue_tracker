@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
 
   resources :issues
+  resources :comments
+  
+  post 'issues/:id/comments', to: 'comments#create'
 
   root 'issues#index'
 end

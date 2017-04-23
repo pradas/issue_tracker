@@ -101,71 +101,61 @@
         </div>
       </div>
     </div>
-  </div></div>
-
-  
-  
-  
-  
-  
-  
-  
-  <div id="issues-comments-container" hidden>
-            <h2>Comments (1)</h2>
-            <ol id="issues-comments" class="comments-list commentable">
-              <li class="issue-comment comment" id="comment-36039918">
-                <article id="comment-36039918" class="iterable-item" data-comment-id="36039918" data-convert-markup="False">
-                  <header>
-                    <a href="/AdronARC/">
-                      <div class="aui-avatar aui-avatar-medium">
-                        <div class="aui-avatar-inner">
-                          <img src="https://bitbucket.org/account/AdronARC/avatar/32/?ts=1492710980" alt="">
-                        </div>
-                      </div>
+    <div id="issues-comments-container">
+      <h3>Comments (<%= @comments.count %>)</h3>
+      <ul id="issues-comments" class="comments-list commentable">
+        <% @comments.each do |comment| %>
+          <li class="issue-comment comment" id="comment-<%= comment.id %>">
+            <div class="col-md-1">
+              <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
+            </div>
+            <div class="col-md-11">
+              <div class="row">
+                <b><%= comment.user.name %></b>
+              </div>
+              <div class="row">
+                <%= comment.content %>
+              </div>
+              <div class="row">
+                <ul class="list-inline">
+                  <li>
+                    <a href="#edit" class="edit-comment-link">Edit</a>
+                  </li>
+                  <li>
+                    <a class="comment-pin-link" data-pin-url="/api/internal/repositories/ASW_G13E/issue_tracker/issues/7/comments/36131714/unpin" href="#comment-pin">
+                        Pin
                     </a>
-                    <a href="/AdronARC/" class="author">Adrián Ruiz Cordón</a>
-                    <span class="aui-lozenge aui-lozenge-complete aui-lozenge-subtle user-issue-lozenge">reporter</span>
-                  </header>
-                  <ul class="changes">
-                    <li>
-                      changed title to
-                      <a href="/ASW_G13E/issue_tracker/issues?title=Editar+vista+%22New+Issue%22+%28look+and+feel%29">Editar vista "New Issue" (look and feel)</a>
-                    </li>
-                  </ul>
-                  <div class="wiki-content comment-content">
-                  </div>
-                  <ul class="comment-actions">
-                    <li>
-                      <a class="permalink" href="#comment-36039918" title="Link directly to this comment">
-                        <time datetime="2017-04-18T15:12:05+02:00" data-title="true" title="18 April 2017 15:12">3 days ago</time>
+                  </li>
+                  <li>
+                    <form method="POST" action="/ASW_G13E/issue_tracker/issue/spam/7/36131714">
+                      <input name="csrfmiddlewaretoken" value="pHWvqMljq9LUfiHY32C1VvwaWKTpzR3D" type="hidden">
+                      <a class="comment-spam-link" href="#comment-spam">
+                          Mark as spam
                       </a>
-                    </li>
-                  </ul>
-                </article>
-              </li>
-              <li class="new-comment">
-                <div class="user">
-                  <div class="aui-avatar aui-avatar-medium">
-                    <div class="aui-avatar-inner">
-                      <img src="https://bitbucket.org/account/jpagesbri/avatar/32/?ts=1492776089" alt="">
-                    </div>
-                  </div>
-                </div>
-                <form class="aui top-label editor" action="#">
-                  <input type="hidden" class="parent_id">
-                  <input type="hidden" class="comment_id">
-                  <div class="field-group">
-                    <textarea id="id_new_comment" class="bb-mention-input" placeholder="What do you want to say?"></textarea>
-                    <div class="preview-container wiki-content"><!-- loaded via ajax --></div>
-                    <div class="error"></div>
-                  </div>
-                  <div class="buttons">
-                    <button class="aui-button aui-button-primary js-comment-button" type="submit" resolved="">Comment</button>
-                    <a href="#" class="cancel">Cancel</a>
-                    
-                  </div>
-                  <div class="mask"></div>
-                </form>
-              </li>
-            </ol>
-          </div>
+                    </form>
+                  </li>
+                  <li>
+                    <form method="POST" action="/ASW_G13E/issue_tracker/issue/delete/7/36131714">
+                      <input name="csrfmiddlewaretoken" value="pHWvqMljq9LUfiHY32C1VvwaWKTpzR3D" type="hidden">
+                      <a class="delete-link" href="#comment-delete">
+                        Delete
+                      </a>
+                    </form>
+                  </li>
+                  <li>
+                    <a class="permalink" href="#comment-36131714" title="Link directly to this comment">
+                      <time datetime="2017-04-21T18:44:47+02:00" data-title="true" title="21 April 2017 18:44">2 days ago</time>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+        <% end %>
+      </ul>
+      
+      <hr>
+      <div class="new-comment">
+        <%= render 'comments/form', issue: @issue, comment: @comment %>
+      </div>
+    </div>
+  </div></div>

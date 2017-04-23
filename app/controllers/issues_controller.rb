@@ -24,6 +24,8 @@ class IssuesController < ApplicationController
   # GET /issues/1
   # GET /issues/1.json
   def show
+    @comments = Comment.where(issue_id: set_issue).order(created_at: :desc)
+    @comment = Comment.new
   end
 
   # GET /issues/new
