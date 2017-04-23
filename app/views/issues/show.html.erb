@@ -39,7 +39,7 @@
 
         <li><%= button_to 'Mark as spam', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
         <li><%=button_to "Delete",issue_path(@issue.id), :method => :delete, :class => "delete dropdown-button text-left", :confirm => "Are you sure ?"%></li>
-        <li><%= button_to 'Attach files', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+        <li><%= button_to 'Attach files', resumes_new_path , {:class => 'dropdown-button text-left'} %></li>
         </ul>
       </div>
     </div>
