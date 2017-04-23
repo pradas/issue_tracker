@@ -83,6 +83,11 @@ module ApplicationHelper
       end
       content.html_safe
     end
+
+    def update_issue_field (field,value,button_class,title=nil)
+      title ||= value
+      button_to title, issue_path("issue["+field+"]"=>value), :method => :patch , :class => button_class
+    end
     
     def remove_unwanted_words string
       bad_words = ["less than", "about"]
@@ -92,5 +97,7 @@ module ApplicationHelper
       end
       return string
     end
+    
+
     
 end

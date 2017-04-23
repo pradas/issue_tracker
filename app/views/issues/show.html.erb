@@ -11,9 +11,9 @@
     </div>
     <div class="col-md-1">
       <% if @issue.status == "new" || @issue.status == "open" %>
-      <%= button_to 'Resolve', issue_path("issue[status]"=>'closed'), :method => :patch , :class => 'not-grey btn btn-primary' %>
+        <%= update_issue_field "status","closed",'not-grey btn btn-primary','Resolve' %>
       <% else %>
-      <%= button_to 'Open', issue_path("issue[status]"=>'open'), :method => :patch , :class => 'not-grey btn btn-primary' %>
+        <%= update_issue_field "status","open",'not-grey btn btn-primary','Open' %>
       <% end %>
     </div>
     <div class="col-md-1">
@@ -21,13 +21,13 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-        <li><%= button_to 'new', issue_path("issue[status]"=>'new'), :method => :patch , :class => 'dropdown-button text-left' %></li>
-        <li><%= button_to 'open', issue_path("issue[status]"=>'open'), :method => :patch , :class => 'dropdown-button text-left' %></li>
-        <li><%= button_to 'on hold', issue_path("issue[status]"=>'on hold'), :method => :patch , :class => 'dropdown-button text-left' %></li>
-        <li><%= button_to 'duplicate', issue_path("issue[status]"=>'duplicate'), :method => :patch , :class => 'dropdown-button text-left' %></li>
-        <li><%= button_to 'invalid', issue_path("issue[status]"=>'invalid'), :method => :patch , :class => 'dropdown-button text-left' %></li>
-        <li><%= button_to 'wontfix', issue_path("issue[status]"=>'wontfix'), :method => :patch , :class => 'dropdown-button text-left' %></li>
-        <li><%= button_to 'closed', issue_path("issue[status]"=>'closed'), :method => :patch , :class => 'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","new",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","open",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","on hold",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","duplicate",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","invalid",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","wontfix",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","closed",'dropdown-button text-left' %></li>
         </ul>
       </div>
     </div>
