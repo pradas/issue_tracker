@@ -11,9 +11,9 @@
     </div>
     <div class="col-md-1">
       <% if @issue.status == "new" || @issue.status == "open" %>
-      <%= link_to 'Resolve', edit_issue_path(@issue) , {:class => 'not-grey btn btn-primary'} %>
+      <%= button_to 'Resolve', issue_path("issue[status]"=>'closed'), :method => :patch , :class => 'not-grey btn btn-primary' %>
       <% else %>
-      <%= link_to 'Open', edit_issue_path(@issue) , {:class => 'btn btn-primary'} %>
+      <%= button_to 'Open', issue_path("issue[status]"=>'open'), :method => :patch , :class => 'not-grey btn btn-primary' %>
       <% end %>
     </div>
     <div class="col-md-1">
@@ -21,13 +21,13 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-        <li><%= button_to 'new', edit_issue_path(@issue) ,{:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'open', edit_issue_path(@issue) ,{:class => 'dropdown-button text-left'}%></li>
-        <li><%= button_to 'on hold', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'duplicate', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'invalid', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'wontfix', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'closed', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+        <li><%= button_to 'new', issue_path("issue[status]"=>'new'), :method => :patch , :class => 'dropdown-button text-left' %></li>
+        <li><%= button_to 'open', issue_path("issue[status]"=>'open'), :method => :patch , :class => 'dropdown-button text-left' %></li>
+        <li><%= button_to 'on hold', issue_path("issue[status]"=>'on hold'), :method => :patch , :class => 'dropdown-button text-left' %></li>
+        <li><%= button_to 'duplicate', issue_path("issue[status]"=>'duplicate'), :method => :patch , :class => 'dropdown-button text-left' %></li>
+        <li><%= button_to 'invalid', issue_path("issue[status]"=>'invalid'), :method => :patch , :class => 'dropdown-button text-left' %></li>
+        <li><%= button_to 'wontfix', issue_path("issue[status]"=>'wontfix'), :method => :patch , :class => 'dropdown-button text-left' %></li>
+        <li><%= button_to 'closed', issue_path("issue[status]"=>'closed'), :method => :patch , :class => 'dropdown-button text-left' %></li>
         </ul>
       </div>
     </div>
