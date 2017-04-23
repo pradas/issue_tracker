@@ -92,13 +92,25 @@
             </dl>
             <dl>
               <dt>Votes</dt>
-                <span class="badge"><%= @issue.votes %></span>
-                  <%= update_issue_field "votes",@issue.votes+1,'link-button','Vote for this issue' %>
+                <div class="row">
+                  <div class="col-xs-1">
+                    <span class="badge"><%= @issue.votes %></span>
+                  </div>
+                  <div class="col-xs-1">
+                    <%= update_issue_field "votes",@issue.votes+1,'link-button btn-link','Vote for this issue' %>
+                  </div>
+                </div>
             </dl>
             <dl>
               <dt>Watchers</dt>
-              <span class="badge"><%= @issue.watchers %></span>
-              <%= update_issue_field "watchers",@issue.watchers+1,'btn btn-link','Watch this issue' %>
+                <div class="row">
+                  <div class="col-xs-1">
+                    <span class="badge"><%= @issue.watchers %></span>
+                  </div>
+                  <div class="col-xs-1">
+                    <%= update_issue_field "watchers",@issue.watchers+1,'link-button btn-link','Watch this issue' %>
+                  </div>
+                </div>
             </dl>
             </div>
           </div>
