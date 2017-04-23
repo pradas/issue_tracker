@@ -119,59 +119,66 @@
     </div>
     <div id="issues-comments-container">
       <h3>Comments (<%= @comments.count %>)</h3>
-      <ul id="issues-comments" class="comments-list commentable">
+      <div id="issues-comments">
         <% @comments.each do |comment| %>
-          <li class="issue-comment comment" id="comment-<%= comment.id %>">
+          <div class="row issue-comment comment">
             <div class="col-md-1">
               <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
             </div>
             <div class="col-md-11">
               <div class="row">
+              <p>
                 <b><%= comment.user.name %></b>
+              </p>
+              <div class="comment-<%= comment.id %>">
+                <p>
+                  <%= comment.content %>
+                </p>
               </div>
-              <div class="row">
-                <%= comment.content %>
+              <div class="col-md-7 comment-<%= comment.id %>" hidden>
+                <%= render 'comments/form', issue: @issue, comment: comment %>
+              </div>
               </div>
               <div class="row">
                 <ul class="list-inline">
                   <li>
-                    <a href="#edit" class="edit-comment-link">Edit</a>
+                    <a href="#edit" class="edit-comment-link" onclick="$('.comment-<%= comment.id %>').toggle();">
+                      Edit
+                    </a>
                   </li>
                   <li>
-                    <a class="comment-pin-link" data-pin-url="/api/internal/repositories/ASW_G13E/issue_tracker/issues/7/comments/36131714/unpin" href="#comment-pin">
+                    <a class="comment-pin-link" href="#comment-pin">
                         Pin
                     </a>
                   </li>
                   <li>
-                    <form method="POST" action="/ASW_G13E/issue_tracker/issue/spam/7/36131714">
-                      <input name="csrfmiddlewaretoken" value="pHWvqMljq9LUfiHY32C1VvwaWKTpzR3D" type="hidden">
-                      <a class="comment-spam-link" href="#comment-spam">
-                          Mark as spam
-                      </a>
-                    </form>
+                    <a class="comment-spam-link" href="#comment-spam">
+                        Mark as spam
+                    </a>
                   </li>
                   <li>
-                    <form method="POST" action="/ASW_G13E/issue_tracker/issue/delete/7/36131714">
-                      <input name="csrfmiddlewaretoken" value="pHWvqMljq9LUfiHY32C1VvwaWKTpzR3D" type="hidden">
-                      <a class="delete-link" href="#comment-delete">
-                        Delete
-                      </a>
-                    </form>
+                    <%= link_to 'Delete', '/issues/'+@issue.id.to_s+'/comments/'+comment.id.to_s, method: :delete, remote: true %>
                   </li>
                   <li>
-                    <a class="permalink" href="#comment-36131714" title="Link directly to this comment">
-                      <time datetime="2017-04-21T18:44:47+02:00" data-title="true" title="21 April 2017 18:44">2 days ago</time>
+                    <a>
+                      <time datetime="<%=comment.created_at %>" ><%= remove_unwanted_words distance_of_time_in_words( comment.created_at , Time.now)%> ago</time>
                     </a>
                   </li>
                 </ul>
               </div>
-            </li>
+            </div>
+            </div>
         <% end %>
-      </ul>
+      </div>
       
       <hr>
-      <div class="new-comment">
-        <%= render 'comments/form', issue: @issue, comment: @comment %>
+      <div class="row">
+        <div class="col-md-1">
+          <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
+        </div>
+        <div class="col-md-7">
+          <%= render 'comments/form', issue: @issue, comment: @comment %>
+        </div>
       </div>
     </div>
   </div></div>

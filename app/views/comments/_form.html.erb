@@ -1,4 +1,4 @@
-<%= form_for @comment, url: "#{@issue.id}/comments" do |f| %>
+<%= form_for comment, url: "#{@issue.id}/comments/" do |f| %>
   <% if comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -11,12 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
+  <div class = "row formfield">
+      <%= f.text_area :content,  {:class => "form-control comment", :placeholder => "What do you want to say?"} %>
+  </div>
+  
+  <div class="row formfield">
+    <%= f.submit 'Submit', :class => 'btn btn-primary bold-text' %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

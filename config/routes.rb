@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :issues
   resources :comments
   
-  post 'issues/:id/comments', to: 'comments#create'
+  post 'issues/:issue_id/comments', to: 'comments#create'
+  get 'issues/:issue_id/comments/:comment_id', to: 'comments#destroy'
+  post 'issues/:issue_id/comments/:comment_id', to: 'comments#update'
+
 
   root 'issues#index'
 end
