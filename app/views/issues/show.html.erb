@@ -92,9 +92,13 @@
             </dl>
             <dl>
               <dt>Votes</dt>
-                <span id="issue-vote-count" class="badge">0</span>
-                  <a href="/issue/6/vote" id="issue-vote-trigger" class="vote-issue" data-vote-text="Vote for this issue" data-unvote-text="Remove vote" data-voted="false" title="Vote for this issue"> Vote for this issue
-                  </a>
+                <span id="issue-vote-count" class="badge"><%= @issue.votes %></span>
+                  <a href="/issue/6/vote" title="Vote for this issue"> Vote for this issue </a>
+            </dl>
+            <dl>
+              <dt>Watchers</dt>
+              <span id="issue-vote-count" class="badge"><%= @issue.watchers %></span>
+              <a href="/issue/6/watch" title="Watch this issue"> Watch this issue </a>
             </dl>
             </div>
           </div>
