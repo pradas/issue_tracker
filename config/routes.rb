@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   
   post 'issues/:issue_id/comments', to: 'comments#create'
   get 'issues/:issue_id/comments/:comment_id', to: 'comments#destroy'
-  post 'issues/:issue_id/comments/:comment_id', to: 'comments#update'
+  patch 'issues/:issue_id/comments/:comment_id', to: 'comments#update'
 
 
   root 'issues#index'
