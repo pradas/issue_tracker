@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20170423124146) do
     t.datetime "updated_at",                  null: false
     t.string   "status",      default: "new"
     t.integer  "votes",       default: 0
-    t.integer  "watchers"
+    t.integer  "watchers",    default: 0
   end
 
   create_table "users", force: :cascade do |t|
