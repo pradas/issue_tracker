@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
   
+  get 'resumes/index'
+
+  get 'resumes/new'
+
+  get 'resumes/create'
+
+  get 'resumes/destroy'
+
   resources :issue_watches
   resources :issue_votes
   get 'auth/:provider/callback', to: 'sessions#create'
@@ -11,6 +19,7 @@ Rails.application.routes.draw do
 
   resources :issues
   resources :comments
+  resources :resumes, only: [:index, :new, :create, :destroy]
   
   post 'issues/:issue_id/comments', to: 'comments#create'
   get 'issues/:issue_id/comments/:comment_id', to: 'comments#destroy'
