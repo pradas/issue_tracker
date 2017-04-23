@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422193056) do
+ActiveRecord::Schema.define(version: 20170423124146) do
+
+  create_table "issue_votes", force: :cascade do |t|
+    t.integer  "user"
+    t.integer  "issue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "issue_watches", force: :cascade do |t|
+    t.integer  "user"
+    t.integer  "issue"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "issues", force: :cascade do |t|
     t.string   "title"
