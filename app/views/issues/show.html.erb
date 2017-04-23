@@ -67,57 +67,7 @@
             <% end %>
           </p>
       </div>
-      <div class="attachments" id="attachments"></div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default col-offset-8">
-        <div class="panel-body">      
-          <div class="aui-item sidebar">
-            <div class="issue-attrs">
-            <dl>
-              <dt>Assignee</dt>
-              <span class="glyphicon glyphicon-user"></span><text> </text><%= byuser @issue.user.name, @issue.user.id  %>
-            </dl>
-            <dl>
-              <dt>Type</dt>
-                <%= bykind @issue.kind,true %>
-            </dl>
-            <dl>
-              <dt>Priority</dt>
-                <%= byprior @issue.priority, true%>
-            </dl>
-            <dl>
-              <dt>Status</dt>
-                <%= bystatus @issue.status%>
-            </dl>
-            <dl>
-              <dt>Votes</dt>
-                <div class="row">
-                  <div class="col-xs-1">
-                    <span class="badge"><%= @issue.votes %></span>
-                  </div>
-                  <div class="col-xs-1">
-                    <%= update_issue_field "votes",@issue.votes+1,'link-button btn-link','Vote for this issue' %>
-                  </div>
-                </div>
-            </dl>
-            <dl>
-              <dt>Watchers</dt>
-                <div class="row">
-                  <div class="col-xs-1">
-                    <span class="badge"><%= @issue.watchers %></span>
-                  </div>
-                  <div class="col-xs-1">
-                    <%= update_issue_field "watchers",@issue.watchers+1,'link-button btn-link','Watch this issue' %>
-                  </div>
-                </div>
-            </dl>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="issues-comments-container">
+      <div id="issues-comments-container">
       <h3>Comments (<%= @comments.count %>)</h3>
       <div id="issues-comments">
         <% @comments.each do |comment| %>
@@ -178,6 +128,56 @@
         </div>
         <div class="col-md-7">
           <%= render 'comments/form', issue: @issue, comment: @comment %>
+        </div>
+      </div>
+    </div>
+      <div class="attachments" id="attachments"></div>
+    </div>
+    <div class="col-md-4">
+      <div class="panel panel-default col-offset-8">
+        <div class="panel-body">      
+          <div class="aui-item sidebar">
+            <div class="issue-attrs">
+            <dl>
+              <dt>Assignee</dt>
+              <span class="glyphicon glyphicon-user"></span><text> </text><%= byuser @issue.user.name, @issue.user.id  %>
+            </dl>
+            <dl>
+              <dt>Type</dt>
+                <%= bykind @issue.kind,true %>
+            </dl>
+            <dl>
+              <dt>Priority</dt>
+                <%= byprior @issue.priority, true%>
+            </dl>
+            <dl>
+              <dt>Status</dt>
+                <%= bystatus @issue.status%>
+            </dl>
+            <dl>
+              <dt>Votes</dt>
+                <div class="row">
+                  <div class="col-xs-1">
+                    <span class="badge"><%= @issue.votes %></span>
+                  </div>
+                  <div class="col-xs-1">
+                    <%= update_issue_field "votes",@issue.votes+1,'link-button btn-link','Vote for this issue' %>
+                  </div>
+                </div>
+            </dl>
+            <dl>
+              <dt>Watchers</dt>
+                <div class="row">
+                  <div class="col-xs-1">
+                    <span class="badge"><%= @issue.watchers %></span>
+                  </div>
+                  <div class="col-xs-1">
+                    <%= update_issue_field "watchers",@issue.watchers+1,'link-button btn-link','Watch this issue' %>
+                  </div>
+                </div>
+            </dl>
+            </div>
+          </div>
         </div>
       </div>
     </div>
