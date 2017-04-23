@@ -11,9 +11,9 @@
     </div>
     <div class="col-md-1">
       <% if @issue.status == "new" || @issue.status == "open" %>
-      <%= link_to 'Resolve', edit_issue_path(@issue) , {:class => 'not-grey btn btn-primary'} %>
+        <%= update_issue_field "status","closed",'not-grey btn btn-primary','Resolve' %>
       <% else %>
-      <%= link_to 'Open', edit_issue_path(@issue) , {:class => 'btn btn-primary'} %>
+        <%= update_issue_field "status","open",'not-grey btn btn-primary','Open' %>
       <% end %>
     </div>
     <div class="col-md-1">
@@ -21,13 +21,13 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
-        <li><%= button_to 'new', edit_issue_path(@issue) ,{:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'open', edit_issue_path(@issue) ,{:class => 'dropdown-button text-left'}%></li>
-        <li><%= button_to 'on hold', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'duplicate', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'invalid', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'wontfix', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
-        <li><%= button_to 'closed', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
+          <li><%= update_issue_field "status","new",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","open",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","on hold",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","duplicate",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","invalid",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","wontfix",'dropdown-button text-left' %></li>
+          <li><%= update_issue_field "status","closed",'dropdown-button text-left' %></li>
         </ul>
       </div>
     </div>
@@ -92,9 +92,13 @@
             </dl>
             <dl>
               <dt>Votes</dt>
-                <span id="issue-vote-count" class="badge">0</span>
-                  <a href="/issue/6/vote" id="issue-vote-trigger" class="vote-issue" data-vote-text="Vote for this issue" data-unvote-text="Remove vote" data-voted="false" title="Vote for this issue"> Vote for this issue
-                  </a>
+                <span class="badge"><%= @issue.votes %></span>
+                  <%= update_issue_field "votes",@issue.votes+1,'btn btn-link','Vote for this issue' %>
+            </dl>
+            <dl>
+              <dt>Watchers</dt>
+              <span class="badge"><%= @issue.watchers %></span>
+              <%= update_issue_field "watchers",@issue.watchers+1,'btn btn-link','Watch this issue' %>
             </dl>
             </div>
           </div>

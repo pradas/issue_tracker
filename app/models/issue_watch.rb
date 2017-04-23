@@ -1,0 +1,2 @@
+class IssueWatch < ApplicationRecord
+end

@@ -1,0 +1,27 @@
+<%= form_for(issue_watch) do |f| %>
+  <% if issue_watch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(issue_watch.errors.count, "error") %> prohibited this issue_watch from being saved:</h2>
+
+      <ul>
+      <% issue_watch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user %>
+    <%= f.number_field :user %>
+  </div>
+
+  <div class="field">
+    <%= f.label :issue %>
+    <%= f.number_field :issue %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

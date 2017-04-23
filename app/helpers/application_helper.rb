@@ -3,7 +3,7 @@ module ApplicationHelper
       title ||= column.titleize
       css_class = column == sort_column ? "current #{sort_direction}" : nil
       direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-      link_to title, params.permit(:user_id,:status,:priority,:kind).merge(:sort => column, :direction => direction), {:class => css_class}
+      link_to title, params.permit(:user_id,:status,:status2,:priority,:kind).merge(:sort => column, :direction => direction), {:class => css_class}
     end
     def byuser(title, user_id)
       link_to title, {:controller=>"/issues",:responsible => user_id}
@@ -21,7 +21,7 @@ module ApplicationHelper
       end
       tag = text == true ? " "+kind_req : ''
       if(tag=='')
-        link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, params.permit(:user_id,:status,:priority).merge(:kind => kind_req)
+        link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, params.permit(:user_id,:status,:status2,:priority).merge(:kind => kind_req)
       else
         link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, {:controller=>"/issues",:kind => kind_req}
       end
@@ -41,7 +41,7 @@ module ApplicationHelper
       end
       tag = text == true ? " "+prior_req : ''
       if(tag=='')
-        link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, params.permit(:user_id,:status,:kind).merge(:priority => prior_req)
+        link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, params.permit(:user_id,:status,:status2,:kind).merge(:priority => prior_req)
       else
         link_to '<span class="glyphicon glyphicon-'.html_safe+icon.html_safe+'"></span>'.html_safe+tag.html_safe, {:controller=>"/issues",:priority => prior_req}
       end
@@ -76,12 +76,22 @@ module ApplicationHelper
         content += "<b>priority :</b>"+ params[:priority]+" "
       end
       if params[:status] != nil
-        content += "<b>status :</b>"+ params[:status]+" "
+        content += "<b>status :</b>"+ params[:status]
+        if params[:status2] != nil
+          content += "+"+ params[:status2]
+        end
+        content += " "
       end
+
       if params[:responsible] != nil
         content += "<b>responsible (id) :</b>"+ params[:responsible]
       end
       content.html_safe
+    end
+
+    def update_issue_field (field,value,button_class,title=nil)
+      title ||= value
+      button_to title, issue_path("issue["+field+"]"=>value), :method => :patch , :class => button_class
     end
     
     def remove_unwanted_words string
@@ -92,5 +102,7 @@ module ApplicationHelper
       end
       return string
     end
+    
+
     
 end

@@ -13,7 +13,7 @@
                         <%= link_to 'All', "issues" %>
                       </li>
                       <li id="open">
-                        <%= link_to 'Open', "issues?status=new&amp;status=open" %>
+                        <%= link_to 'Open', "issues?status=new&status2=open" %>
                       </li>
                        <% if current_user %>
                       <li id="mine">
@@ -48,9 +48,9 @@
                 <th class="col-md-5"><%= sortable "Title"%></th>
                 <th><%= sortable "kind","T"  %></th>
                 <th><%= sortable "priority","P"%></th>
-                <th><%= sortable "Status"%></th>
-                <th><%= sortable "Votes"%></th>
-                <th><%= sortable "user.name","Assignee"%></th>
+                <th><%= sortable "status"%></th>
+                <th><%= sortable "votes"%></th>
+                <th><%= sortable "user_id","Assignee"%></th>
                 <th><%= sortable "created_at","Created" %></th>
                 <th><%= sortable "updated_at","Updated" %></th>
               </tr>
@@ -64,7 +64,7 @@
                   <td><%= byprior issue.priority%></td>
                   <td><%= bystatus issue.status%></td>
                   <td><span class="badge"><%= issue.votes %></span></td>
-                  <td class="username-td"><span class="glyphicon glyphicon-user"></span><%= issue.user.name %></td>
+                  <td class="username-td"><span class="glyphicon glyphicon-user"></span> <%= issue.user.name %></td>
                   <td><time datetime=issue.created_at ><%= remove_unwanted_words distance_of_time_in_words( issue.created_at , Time.now)%> ago</time></td>
                   <td><time datetime=issue.updated_at ><%= remove_unwanted_words distance_of_time_in_words( issue.updated_at , Time.now)%> ago</time></td>
                 </tr>

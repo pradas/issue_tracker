@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :issue_watches
+  resources :issue_votes
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'

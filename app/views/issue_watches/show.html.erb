@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @issue_watch.user %>
+</p>
+
+<p>
+  <strong>Issue:</strong>
+  <%= @issue_watch.issue %>
+</p>
+
+<%= link_to 'Edit', edit_issue_watch_path(@issue_watch) %> |
+<%= link_to 'Back', issue_watches_path %>
