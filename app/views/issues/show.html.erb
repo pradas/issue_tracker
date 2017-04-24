@@ -75,7 +75,7 @@
         created an issue
         <time><%= distance_of_time_in_words( @issue.created_at , Time.now) %> ago</time>
       </div>
-      <div class="issue-description wiki-content">
+      <div class="issue-description wiki-content desc-break">
           <p>
             <% if @issue.description %>
               <%= @issue.description %>
