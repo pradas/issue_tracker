@@ -85,6 +85,7 @@
           </p>
       </div>
       <hr>
+      <% if @resumes.count> 0%>
       <div class="attachments" id="attachments">
         <table class = "table table-bordered table-striped">
            <thead>
@@ -110,6 +111,7 @@
            
         </table>
       </div>
+      <% end %>
       <hr>
       <div id="issues-comments-container">
       <h3>Comments (<%= @comments.count %>)</h3>
