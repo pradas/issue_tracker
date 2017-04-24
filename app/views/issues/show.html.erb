@@ -1,4 +1,4 @@
-      <div class="container">
+<div class="container">
 <p id="notice"><%= notice %></p>
   <div class="row">
     <div class="col-xs-8">
@@ -9,6 +9,7 @@
         <span class="label label-success"><%= bystatus @issue.status%></span>
       </a>
     </div>
+    <% if current_user != nil %>
     <div class="col-xs-1">
       <% if @issue.status == "new" || @issue.status == "open" %>
         <%= update_issue_field "status","resolved",'not-grey btn btn-primary','Resolve' %>
@@ -63,6 +64,7 @@
     <div class="col-xs-1">
     <%= link_to 'Edit', edit_issue_path(@issue), {:class => "btn btn-default btn-block"} %>
     </div>
+  <% end %>
   </div>
   <div class="row">
     <div class="col-xs-8">
@@ -168,6 +170,7 @@
       </div>
       
       <hr>
+      <% if current_user != nil %>
       <div class="row">
         <div class="col-xs-1">
           <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
@@ -176,6 +179,7 @@
           <%= render 'comments/form', issue: @issue, comment: @comment %>
         </div>
       </div>
+      <% end %>
     </div>
     </div>
     <div class="col-xs-4">
@@ -208,9 +212,11 @@
                   <div class="col-xs-1">
                     <span class="badge"><%= @issue.votes %></span>
                   </div>
+                  <% if current_user != nil %>
                   <div class="col-xs-1">
                     <%= update_issue_field "votes",@issue.votes+1,'link-button btn-link','Vote for this issue' %>
                   </div>
+                  <% end %>
                 </div>
             </dl>
             <dl>
@@ -219,9 +225,11 @@
                   <div class="col-xs-1">
                     <span class="badge"><%= @issue.watchers %></span>
                   </div>
+                  <% if current_user != nil %>
                   <div class="col-xs-1">
                     <%= update_issue_field "watchers",@issue.watchers+1,'link-button btn-link','Watch this issue' %>
                   </div>
+                  <% end %>
                 </div>
             </dl>
             </div>
@@ -229,4 +237,5 @@
         </div>
       </div>
     </div>
-  </div></div>
+  </div>
+</div>
