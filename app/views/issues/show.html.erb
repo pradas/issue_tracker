@@ -21,13 +21,30 @@
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
+          <% if @issue.status != "new" %>
           <li><%= update_issue_field "status","new",'dropdown-button text-left' %></li>
+          <% end %>
+          <% if @issue.status != "open" %>
           <li><%= update_issue_field "status","open",'dropdown-button text-left' %></li>
+          <% end %>
+          <% if @issue.status != "resolve" %>
+          <li><%= update_issue_field "status","resolve",'dropdown-button text-left' %></li>
+          <% end %>
+          <% if @issue.status != "on hold" %>
           <li><%= update_issue_field "status","on hold",'dropdown-button text-left' %></li>
+          <% end %>
+          <% if @issue.status != "duplicate" %>
           <li><%= update_issue_field "status","duplicate",'dropdown-button text-left' %></li>
+          <% end %>
+          <% if @issue.status != "invalid" %>
           <li><%= update_issue_field "status","invalid",'dropdown-button text-left' %></li>
+          <% end %>
+          <% if @issue.status != "wontfix" %>
           <li><%= update_issue_field "status","wontfix",'dropdown-button text-left' %></li>
+          <% end %>
+          <% if @issue.status != "closed" %>
           <li><%= update_issue_field "status","closed",'dropdown-button text-left' %></li>
+          <% end %>
         </ul>
       </div>
     </div>
