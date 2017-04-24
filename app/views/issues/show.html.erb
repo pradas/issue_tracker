@@ -1,7 +1,7 @@
       <div class="container">
 <p id="notice"><%= notice %></p>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-xs-8">
       <span class="issue-id">
           Issue  #<%= @issue.id %>
       </span>
@@ -9,14 +9,14 @@
         <span class="label label-success"><%= bystatus @issue.status%></span>
       </a>
     </div>
-    <div class="col-md-1">
+    <div class="col-xs-1">
       <% if @issue.status == "new" || @issue.status == "open" %>
         <%= update_issue_field "status","resolved",'not-grey btn btn-primary','Resolve' %>
       <% else %>
         <%= update_issue_field "status","open",'not-grey btn btn-primary','Open' %>
       <% end %>
     </div>
-    <div class="col-md-1">
+    <div class="col-xs-1">
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Workflow
         <span class="caret"></span></button>
@@ -48,7 +48,7 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-1">
+    <div class="col-xs-1">
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">More
         <span class="caret"></span></button>
@@ -60,12 +60,12 @@
         </ul>
       </div>
     </div>
-    <div class="col-md-1">
+    <div class="col-xs-1">
     <%= link_to 'Edit', edit_issue_path(@issue), {:class => "btn btn-default btn-block"} %>
     </div>
   </div>
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-xs-8">
       <h3 id="issue-title"><%= @issue.title %></h3>
       <div class="issue-author">
         <a>
@@ -116,10 +116,10 @@
       <div id="issues-comments">
         <% @comments.each do |comment| %>
           <div class="row issue-comment comment">
-            <div class="col-md-1">
+            <div class="col-xs-1">
               <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
             </div>
-            <div class="col-md-11">
+            <div class="col-xs-11">
               <div class="row">
               <p>
                 <b><%= comment.user.name %></b>
@@ -129,7 +129,7 @@
                   <%= comment.content %>
                 </p>
               </div>
-              <div class="col-md-7 comment-<%= comment.id %>" hidden>
+              <div class="col-xs-7 comment-<%= comment.id %>" hidden>
                 <%= render 'comments/form', issue: @issue, comment: comment %>
               </div>
               </div>
@@ -167,16 +167,16 @@
       
       <hr>
       <div class="row">
-        <div class="col-md-1">
+        <div class="col-xs-1">
           <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
         </div>
-        <div class="col-md-7">
+        <div class="col-xs-7">
           <%= render 'comments/form', issue: @issue, comment: @comment %>
         </div>
       </div>
     </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-xs-4">
       <div id="attach-form" hidden>
         <%= render 'resumes/form', issue: @issue, resume: @resume %>
       </div>

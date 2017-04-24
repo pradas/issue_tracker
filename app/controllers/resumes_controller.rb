@@ -10,7 +10,6 @@ class ResumesController < ApplicationController
       @resume.issue_id = params[:issue_id]
       @resume.user_id = current_user.id
       
-      @resume.save
       redirect_to Issue.find(params[:issue_id])
    end
    
@@ -23,7 +22,7 @@ class ResumesController < ApplicationController
    private
    
    def resume_params
-      params.require(:resume).permit(:name, :attachment)
+      params.permit(:name, :attachment)
    end
    
 end
