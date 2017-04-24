@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// A $( document ).ready() block.
+$( document ).ready(function() {
+    $('#submit_attachment').prop('disabled', true);
+    $('#resume_attachment').on('change', function(){ 
+      if($('#resume_attachment').val() == "") {
+        $('#submit_attachment').prop('disabled', true);
+      }
+      else {
+        $('#submit_attachment').prop('disabled', false);
+      }
+    });
+});
