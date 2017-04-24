@@ -56,6 +56,8 @@ module ApplicationHelper
         icon ='default'
       elsif status_req == "on hold" 
         icon ='warning'
+      elsif status_req == "duplicate"
+      icon = 'info'
       else  
         icon ='danger'
       end 
