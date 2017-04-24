@@ -136,6 +136,7 @@
                 <%= render 'comments/form', issue: @issue, comment: comment %>
               </div>
               </div>
+              <% if current_user != nil %>
               <div class="row">
                 <ul class="list-inline">
                   <li>
@@ -158,6 +159,7 @@
                   </li>
                 </ul>
               </div>
+              <% end %>
             </div>
             </div>
         <% end %>
