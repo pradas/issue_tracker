@@ -3,8 +3,20 @@ module ApplicationHelper
       title ||= column.titleize
       css_class = column == sort_column ? "current #{sort_direction}" : nil
       direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"
-      link_to title, params.permit(:user_id,:status,:status2,:priority,:kind).merge(:sort => column, :direction => direction), {:class => css_class}
+      link_to params.permit(:user_id,:status,:status2,:priority,:kind).merge(:sort => column, :direction => direction), {:class => css_class} do
+        if column == sort_column
+          if sort_direction=="desc"
+            title.html_safe+'<span class="glyphicon glyphicon-triangle-bottom" style="float:right"></span>'.html_safe
+          else
+            title.html_safe+'<span class="glyphicon glyphicon-triangle-top" style="float:right"></span>'.html_safe
+          end 
+        else
+          title
+        end
+        
+      end
     end
+    
     def byuser(title, user_id)
       link_to title, {:controller=>"/issues",:responsible => user_id}
     end
