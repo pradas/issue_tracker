@@ -1,27 +1,23 @@
 class ResumesController < ApplicationController
-   def index
-      @resumes = Resume.all
-   end
-   
+
    def new
       @resume = Resume.new
    end
    
    def create
       @resume = Resume.new(resume_params)
+      @resume.name = params[:resume][:attachment].original_filename
+      @resume.issue_id = params[:issue_id]
+      @resume.user_id = current_user.id
       
-      if @resume.save
-         redirect_to resumes_path, notice: "The resume #{@resume.name} has been uploaded."
-      else
-         render "new"
-      end
-      
+      @resume.save
+      redirect_to Issue.find(params[:issue_id])
    end
    
    def destroy
       @resume = Resume.find(params[:id])
       @resume.destroy
-      redirect_to resumes_path, notice:  "The resume #{@resume.name} has been deleted."
+      redirect_back(fallback_location: root_path)
    end
    
    private

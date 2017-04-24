@@ -1,0 +1,9 @@
+ <%= form_for resume, url: "/issues/#{@issue.id}/attachments", html: { multipart: true } do |f| %>
+    <div class="form-group">
+      <%= f.label :attachment %>
+      <%= f.file_field :attachment, class: "required" %>
+    </div>
+    
+    <%= f.submit "Save", class: "btn btn-primary" %>
+    <a class="btn" onclick="$('#attach-form').hide();">Cancel</a>
+ <% end %>

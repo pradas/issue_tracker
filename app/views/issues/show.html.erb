@@ -39,7 +39,7 @@
 
         <li><%= button_to 'Mark as spam', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
         <li><%=button_to "Delete",issue_path(@issue.id), :method => :delete, :class => "delete dropdown-button text-left", :confirm => "Are you sure ?"%></li>
-        <li><%= button_to 'Attach files', resumes_new_path , {:class => 'dropdown-button text-left'} %></li>
+        <li><button class="dropdown-button text-left" onclick="$('#attach-form').toggle();">Attach files</button></li>
         </ul>
       </div>
     </div>
@@ -67,6 +67,33 @@
             <% end %>
           </p>
       </div>
+      <hr>
+      <div class="attachments" id="attachments">
+        <table class = "table table-bordered table-striped">
+           <thead>.
+              <tr>
+                 <th width="85%">File</th>
+                 <th width="15%">Options</th>
+              </tr>
+           </thead>
+           
+           <tbody>
+              <% @resumes.each do |resume| %>
+                 
+                 <tr>
+                    <td><%= resume.name %></td>
+                    <td>
+                      <%= link_to "Download", resume.attachment_url, class: "btn btn-primary" %>
+                      <%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.name}?" %>
+                    </td>
+                 </tr>
+                 
+              <% end %>
+           </tbody>
+           
+        </table>
+      </div>
+      <hr>
       <div id="issues-comments-container">
       <h3>Comments (<%= @comments.count %>)</h3>
       <div id="issues-comments">
@@ -131,9 +158,11 @@
         </div>
       </div>
     </div>
-      <div class="attachments" id="attachments"></div>
     </div>
     <div class="col-md-4">
+      <div id="attach-form" hidden>
+        <%= render 'resumes/form', issue: @issue, resume: @resume %>
+      </div>
       <div class="panel panel-default col-offset-8">
         <div class="panel-body">      
           <div class="aui-item sidebar">

@@ -26,6 +26,8 @@ class IssuesController < ApplicationController
   def show
     @comments = Comment.where(issue_id: set_issue).order(created_at: :desc)
     @comment = Comment.new
+    @resumes = Resume.where(issue_id: set_issue).order(created_at: :desc)
+    @resume = Resume.new
   end
 
   # GET /issues/new

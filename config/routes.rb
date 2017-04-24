@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  
-  get 'resumes/index'
-
-  get 'resumes/new'
-
-  get 'resumes/create'
 
   get 'resumes/destroy'
 
@@ -18,12 +12,14 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
 
   resources :issues
-  resources :comments
-  resources :resumes, only: [:index, :new, :create, :destroy]
+  resources :resumes, only: [:destroy]
   
   post 'issues/:issue_id/comments', to: 'comments#create'
   get 'issues/:issue_id/comments/:comment_id', to: 'comments#destroy'
   patch 'issues/:issue_id/comments/:comment_id', to: 'comments#update'
+  
+  post 'issues/:issue_id/attachments', to: 'resumes#create'
+  #delete 'issues/:issue:id/attachments/:attachment_id', to: 'resumes#destroy'
 
 
   root 'issues#index'
