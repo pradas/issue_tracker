@@ -25,6 +25,8 @@ class IssueWatchesController < ApplicationController
   # POST /issue_watches.json
   def create
     @issue_watch = IssueWatch.new(issue_watch_params)
+    @issue_watch.issue = params[:issue_id]
+    @issue_watch.user = current_user.id
 
     respond_to do |format|
       if @issue_watch.save

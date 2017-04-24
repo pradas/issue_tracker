@@ -25,6 +25,8 @@ class IssueVotesController < ApplicationController
   # POST /issue_votes.json
   def create
     @issue_vote = IssueVote.new(issue_vote_params)
+    @issue_vote.issue = params[:issue_id]
+    @issue_vote.user = current_user.id
 
     respond_to do |format|
       if @issue_vote.save
