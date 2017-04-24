@@ -70,7 +70,7 @@
       <hr>
       <div class="attachments" id="attachments">
         <table class = "table table-bordered table-striped">
-           <thead>.
+           <thead>
               <tr>
                  <th width="85%">File</th>
                  <th width="15%">Options</th>
@@ -83,7 +83,7 @@
                  <tr>
                     <td><%= resume.name %></td>
                     <td>
-                      <%= link_to "Download", resume.attachment_url, class: "btn btn-primary" %>
+                      <%= link_to "Download", resume.attachment_url, class: "not-grey btn btn-primary" %>
                       <%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.name}?" %>
                     </td>
                  </tr>
