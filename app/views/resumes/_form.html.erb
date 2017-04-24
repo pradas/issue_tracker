@@ -4,6 +4,6 @@
       <%= f.file_field :attachment, class: "required" %>
     </div>
     
-    <%= f.submit "Save", id: "submit_attachment", class: "btn btn-primary" %>
+    <%= f.submit "Save", id: "submit_attachment", class: "btn btn-primary", :disabled => true %>
     <a class="btn" onclick="$('#attach-form').hide();">Cancel</a>
  <% end %>

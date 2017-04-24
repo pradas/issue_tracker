@@ -34,6 +34,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Omniauth google oauth2
 gem 'omniauth-google-oauth2', '~> 0.2.1'
 
+gem 'jquery-turbolinks'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

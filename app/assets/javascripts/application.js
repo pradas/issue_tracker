@@ -11,19 +11,21 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require turbolinks
-//= require_tree .
 
-// A $( document ).ready() block.
-$( document ).ready(function() {
-    $('#submit_attachment').prop('disabled', true);
+$(document).ready(function() {
     $('#resume_attachment').on('change', function(){ 
       if($('#resume_attachment').val() == "") {
         $('#submit_attachment').prop('disabled', true);
+        console.log('ok');
       }
       else {
         $('#submit_attachment').prop('disabled', false);
+        console.log('ko');
       }
     });
 });
+
+//= require turbolinks
+//= require_tree .
