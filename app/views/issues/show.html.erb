@@ -55,7 +55,6 @@
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
 
-        <li><%= button_to 'Mark as spam', edit_issue_path(@issue) , {:class => 'dropdown-button text-left'} %></li>
         <li><%=button_to "Delete",issue_path(@issue.id), :method => :delete, :class => "delete dropdown-button text-left", :confirm => "Are you sure ?"%></li>
         <li><button class="dropdown-button text-left" onclick="$('#attach-form').toggle();">Attach files</button></li>
         </ul>
@@ -147,11 +146,6 @@
                   <li>
                     <a class="comment-pin-link" href="#comment-pin">
                         Pin
-                    </a>
-                  </li>
-                  <li>
-                    <a class="comment-spam-link" href="#comment-spam">
-                        Mark as spam
                     </a>
                   </li>
                   <li>
