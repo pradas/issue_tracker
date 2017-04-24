@@ -55,7 +55,7 @@
         <span class="caret"></span></button>
         <ul class="dropdown-menu">
 
-        <li><%=button_to "Delete",issue_path(@issue.id), :method => :delete, :class => "delete dropdown-button text-left", :confirm => "Are you sure ?"%></li>
+        <li><%=button_to "Delete",issue_path(@issue.id), :method => :delete, :class => "delete dropdown-button text-left", :data =>{:confirm => "Are you sure you want to delete Issue ##{@issue.id}?"}%></li>
         <li><button class="dropdown-button text-left" onclick="$('#attach-form').toggle();">Attach files</button></li>
         </ul>
       </div>
@@ -103,7 +103,7 @@
                     <td><%= resume.name %></td>
                     <td>
                       <%= link_to "Download", resume.attachment_url, class: "not-grey btn btn-primary" %>
-                      <%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", confirm: "Are you sure that you wish to delete #{resume.name}?" %>
+                      <%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure that you wish to delete #{resume.name}?"}%>
                     </td>
                  </tr>
                  
@@ -150,7 +150,7 @@
                     </a>
                   </li>
                   <li>
-                    <%= link_to 'Delete', '/issues/'+@issue.id.to_s+'/comments/'+comment.id.to_s, method: :delete, remote: true %>
+                    <%= link_to 'Delete', '/issues/'+@issue.id.to_s+'/comments/'+comment.id.to_s, method: :delete, remote: true , data: {confirm: "Are you sure that you wish to delete this comment?"}%>
                   </li>
                   <li>
                     <a>
