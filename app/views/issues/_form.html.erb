@@ -14,7 +14,8 @@
   
   <div class = "row formfield">
     <label class="col-sm-3">
-      <%= f.label :title %>
+      <%= f.label :title%>
+      <%= '*'%>
     </label>
     <label class ="col-sm-6">
       <%= f.text_field :title, {:class => "form-control"} %>
@@ -34,6 +35,7 @@
   <div class = "row formfield">
     <label class="col-sm-3 movedown">
       <%= f.label :user_id %>
+      <%= '*'%>
     </label>
     <label class ="col-sm-1">
       <%= f.collection_select :user_id, User.all, :id, :name %>
@@ -42,6 +44,7 @@
   <div class = "row formfield">
     <label class="col-sm-3 movedown">
       <%= f.label :kind%>
+      <%= '*'%>
     </label>
     <label class ="col-sm-1">
       <%= f.select :kind, options_for_select(["bug","enhancement","proposal","task"]) , {:class => "form-control"} %>
@@ -50,6 +53,7 @@
   <div class = "row formfield">
     <label class="col-sm-3 movedown">
       <%= f.label :priority %>
+      <%= '*'%>
     </label>
     <label class ="col-sm-1">
       <%= f.select :priority, options_for_select(["trivial","minor","major","critical","blocker"]) , {:class => "form-control"} %>
