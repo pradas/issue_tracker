@@ -150,7 +150,7 @@
                     </a>
                   </li>
                   <li>
-                    <%= link_to 'Delete', '/issues/'+@issue.id.to_s+'/comments/'+comment.id.to_s, method: :delete, remote: true , data: {confirm: "Are you sure that you wish to delete this comment?"}%>
+                    <a href="/issues/<%= @issue.id.to_s %>/comments/<%= comment.id.to_s %>" onclick="confirm('Are you sure that you wish to delete this comment?')">Delete</a>
                   </li>
                   <li>
                     <a>
