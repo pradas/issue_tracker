@@ -42,11 +42,11 @@ ActiveRecord::Schema.define(version: 20170424033951) do
     t.integer  "user_id"
     t.string   "kind"
     t.string   "priority"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
-    t.string   "status",      default: "new"
-    t.integer  "votes",       default: 0
-    t.integer  "watchers",    default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "status",      default: "1"
+    t.integer  "votes"
+    t.integer  "watchers"
   end
 
   create_table "resumes", force: :cascade do |t|
