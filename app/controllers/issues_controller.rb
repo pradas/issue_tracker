@@ -19,6 +19,7 @@ class IssuesController < ApplicationController
     if  params[:priority] != nil
       @issues = @issues.where(["priority = ?",params[:priority]]).order(sort_column+" "+sort_direction)
     end
+    @issue_votes = IssueVote.order(created_at: :desc)
   end
 
   # GET /issues/1
@@ -30,11 +31,14 @@ class IssuesController < ApplicationController
     @resume = Resume.new
     @issue_votes = IssueVote.where(issue_id: set_issue).order(created_at: :desc)
     @issue_vote = IssueVote.new
-    @user_vote = IssueVote.where(user_id: current_user.id, issue_id: set_issue).first
+    if current_user!= nil
+      @user_vote = IssueVote.where(user_id: current_user.id, issue_id: set_issue).first
+    end
     @issue_watches = IssueWatch.where(issue_id: set_issue).order(created_at: :desc)
     @issue_watch = IssueWatch.new
-    @user_watch = IssueWatch.where(user_id: current_user.id, issue_id: set_issue).first
-
+    if current_user!= nil
+      @user_watch = IssueWatch.where(user_id: current_user.id, issue_id: set_issue).first
+    end
   end
 
   # GET /issues/new

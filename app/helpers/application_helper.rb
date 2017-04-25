@@ -92,7 +92,7 @@ module ApplicationHelper
       if params[:status] != nil
         content += "<b>status :</b>"+ params[:status]
         if params[:status2] != nil
-          content += "+"+ params[:status2]
+          content += " or "+ params[:status2]
         end
         content += " "
       end

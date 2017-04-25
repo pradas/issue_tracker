@@ -103,7 +103,9 @@
                     <td><%= resume.name %></td>
                     <td>
                       <%= link_to "Download", resume.attachment_url, class: "not-grey btn btn-primary" %>
-                      <%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure that you wish to delete #{resume.name}?"}%>
+                      <% if current_user != nil %>
+                        <%= button_to "Delete",  resume, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure that you wish to delete #{resume.name}?"}%>
+                      <% end %>
                     </td>
                  </tr>
                  
@@ -137,28 +139,30 @@
               </div>
               </div>
               <% if current_user != nil %>
-              <div class="row">
-                <ul class="list-inline">
-                  <li>
-                    <a href="#edit" class="edit-comment-link" onclick="$('.comment-<%= comment.id %>').toggle();">
-                      Edit
-                    </a>
-                  </li>
-                  <li>
-                    <a class="comment-pin-link" href="#comment-pin">
-                        Pin
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/issues/<%= @issue.id.to_s %>/comments/<%= comment.id.to_s %>" onclick="confirm('Are you sure that you wish to delete this comment?')">Delete</a>
-                  </li>
-                  <li>
-                    <a>
-                      <time datetime="<%=comment.created_at %>" ><%= remove_unwanted_words distance_of_time_in_words( comment.created_at , Time.now)%> ago</time>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+                <div class="row">
+                  <ul class="list-inline">
+                    <% if @issue.user == current_user %>
+                      <li>
+                        <a href="#edit" class="edit-comment-link" onclick="$('.comment-<%= comment.id %>').toggle();">
+                          Edit
+                        </a>
+                      </li>
+                    <% end %>
+                    <li>
+                      <a class="comment-pin-link" href="#comment-pin">
+                          Pin
+                      </a>
+                    </li>
+                    <li>
+                      <a href="/issues/<%= @issue.id.to_s %>/comments/<%= comment.id.to_s %>" onclick="confirm('Are you sure that you wish to delete this comment?')">Delete</a>
+                    </li>
+                    <li>
+                      <a>
+                        <time datetime="<%=comment.created_at %>" ><%= remove_unwanted_words distance_of_time_in_words( comment.created_at , Time.now)%> ago</time>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               <% end %>
             </div>
             </div>
@@ -167,14 +171,14 @@
       
       <hr>
       <% if current_user != nil %>
-      <div class="row">
-        <div class="col-xs-1">
-          <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
+        <div class="row">
+          <div class="col-xs-1">
+            <img src="https://bitbucket.org/account/pradas/avatar/32/?ts=1492956548" height="38" width="38" alt="">
+          </div>
+          <div class="col-xs-7">
+            <%= render 'comments/form', issue: @issue, comment: @comment %>
+          </div>
         </div>
-        <div class="col-xs-7">
-          <%= render 'comments/form', issue: @issue, comment: @comment %>
-        </div>
-      </div>
       <% end %>
     </div>
     </div>
@@ -209,9 +213,9 @@
                     <span class="badge"><%= @issue_votes.count %></span>
                   </div>
                   <% if current_user != nil %>
-                  <div class="col-xs-1">
-                    <%= render 'issue_votes/form', issue: @issue, issue_vote: @issue_vote %>
-                  </div>
+                    <div class="col-xs-1">
+                      <%= render 'issue_votes/form', issue: @issue, issue_vote: @issue_vote %>
+                    </div>
                   <% end %>
                 </div>
             </dl>
@@ -222,9 +226,9 @@
                     <span class="badge"><%= @issue_watches.count %></span>
                   </div>
                   <% if current_user != nil %>
-                  <div class="col-xs-1">
-                    <%= render 'issue_watches/form', issue: @issue, issue_watch: @issue_watch %>
-                  </div>
+                    <div class="col-xs-1">
+                      <%= render 'issue_watches/form', issue: @issue, issue_watch: @issue_watch %>
+                    </div>
                   <% end %>
                 </div>
             </dl>

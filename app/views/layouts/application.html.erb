@@ -3,7 +3,7 @@
   <head>
     <title>Issues Tracker</title>
     <%= csrf_meta_tags %>
-
+    <%= javascript_include_tag :defaults %>
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track': 'reload' %>
     <!-- Latest compiled and minified CSS -->
@@ -47,8 +47,6 @@
         <div class="col-md-2 col-sm-2">
         <% if current_user != nil %>
           <%= link_to 'Create Issue', new_issue_path, {:class => "btn btn-default btn-block"} %>
-        <% else %>
-          <p>You're not logged in</p>
         <%end %>
         </div>
       </div>
