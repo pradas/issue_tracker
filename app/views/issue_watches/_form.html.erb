@@ -13,8 +13,8 @@
 
   <div class="actions">
     <% if @user_watch %>
-      <%= f.submit 'Stop watching' %>
+      <%= f.submit 'Stop watching', :class => 'link-button btn-link' %>
     <% else %>
-      <%= f.submit 'Watch this issue' %>
+      <%= f.submit 'Watch this issue', :class =>'link-button btn-link' %>
     <% end %>  </div>
 <% end %>

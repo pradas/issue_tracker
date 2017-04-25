@@ -13,9 +13,9 @@
 
   <div class="actions">
     <% if @user_vote %>
-      <%= f.submit 'Remove vote' %>
+      <%= f.submit 'Remove vote', :class => 'link-button btn-link' %>
     <% else %>
-      <%= f.submit 'Vote for this issue' %>
+      <%= f.submit 'Vote for this issue', :class => 'link-button btn-link' %>
     <% end %>
   </div>
 <% end %>
