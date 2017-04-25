@@ -24,18 +24,23 @@ class IssueVotesController < ApplicationController
   # POST /issue_votes
   # POST /issue_votes.json
   def create
-    @issue_vote = IssueVote.new(issue_vote_params)
-    @issue_vote.issue = params[:issue_id]
-    @issue_vote.user = current_user.id
-
-    respond_to do |format|
-      if @issue_vote.save
-        format.html { redirect_to @issue_vote, notice: 'Issue vote was successfully created.' }
-        format.json { render :show, status: :created, location: @issue_vote }
-      else
-        format.html { render :new }
-        format.json { render json: @issue_vote.errors, status: :unprocessable_entity }
-      end
+    if IssueVote.where(user_id: current_user.id, issue_id: params[:issue_id]).first != nil
+      IssueVote.where(user_id: current_user.id, issue_id: params[:issue_id]).first.destroy
+      redirect_to Issue.find(params[:issue_id])
+    else
+      @issue_vote = IssueVote.new()
+      @issue_vote.issue_id = params[:issue_id]
+      @issue_vote.user_id = current_user.id
+  
+      respond_to do |format|
+        if @issue_vote.save
+          format.html { redirect_to Issue.find(params[:issue_id]) }
+          #format.json { render :show, status: :created, location: @issue_vote }
+        else
+          format.html { render :new }
+          #format.json { render json: @issue_vote.errors, status: :unprocessable_entity }
+        end
+      end 
     end
   end
 

@@ -206,11 +206,11 @@
               <dt>Votes</dt>
                 <div class="row">
                   <div class="col-xs-1">
-                    <span class="badge"><%= @issue.votes %></span>
+                    <span class="badge"><%= @issue_votes.count %></span>
                   </div>
                   <% if current_user != nil %>
                   <div class="col-xs-1">
-                    <%= update_issue_field "votes",@issue.votes+1,'link-button btn-link','Vote for this issue' %>
+                    <%= render 'issue_votes/form', issue: @issue, issue_vote: @issue_vote %>
                   </div>
                   <% end %>
                 </div>
@@ -219,11 +219,11 @@
               <dt>Watchers</dt>
                 <div class="row">
                   <div class="col-xs-1">
-                    <span class="badge"><%= @issue.watchers %></span>
+                    <span class="badge"><%= @issue_watches.count %></span>
                   </div>
                   <% if current_user != nil %>
                   <div class="col-xs-1">
-                    <%= update_issue_field "watchers",@issue.watchers+1,'link-button btn-link','Watch this issue' %>
+                    <%= render 'issue_watches/form', issue: @issue, issue_watch: @issue_watch %>
                   </div>
                   <% end %>
                 </div>

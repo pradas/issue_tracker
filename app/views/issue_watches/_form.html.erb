@@ -1,4 +1,4 @@
-<%= form_for(issue_watch) do |f| %>
+<%= form_for issue_watch, url: "/issues/#{@issue.id}/watches" do |f| %>
   <% if issue_watch.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(issue_watch.errors.count, "error") %> prohibited this issue_watch from being saved:</h2>
@@ -11,17 +11,10 @@
     </div>
   <% end %>
 
-  <div class="field" hidden>
-    <%= f.label :user %>
-    <%= f.number_field :user %>
-  </div>
-
-  <div class="field" hidden>
-    <%= f.label :issue %>
-    <%= f.number_field :issue %>
-  </div>
-
   <div class="actions">
-    <%= f.submit %>
-  </div>
+    <% if @user_watch %>
+      <%= f.submit 'Stop watching' %>
+    <% else %>
+      <%= f.submit 'Watch this issue' %>
+    <% end %>  </div>
 <% end %>

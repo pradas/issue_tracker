@@ -24,18 +24,23 @@ class IssueWatchesController < ApplicationController
   # POST /issue_watches
   # POST /issue_watches.json
   def create
-    @issue_watch = IssueWatch.new(issue_watch_params)
-    @issue_watch.issue = params[:issue_id]
-    @issue_watch.user = current_user.id
-
-    respond_to do |format|
-      if @issue_watch.save
-        format.html { redirect_to @issue_watch, notice: 'Issue watch was successfully created.' }
-        format.json { render :show, status: :created, location: @issue_watch }
-      else
-        format.html { render :new }
-        format.json { render json: @issue_watch.errors, status: :unprocessable_entity }
-      end
+    if IssueWatch.where(user_id: current_user.id, issue_id: params[:issue_id]).first != nil
+      IssueWatch.where(user_id: current_user.id, issue_id: params[:issue_id]).first.destroy
+      redirect_to Issue.find(params[:issue_id])
+    else
+      @issue_watch = IssueWatch.new()
+      @issue_watch.issue_id = params[:issue_id]
+      @issue_watch.user_id = current_user.id
+  
+      respond_to do |format|
+        if @issue_watch.save
+          format.html { redirect_to Issue.find(params[:issue_id]) }
+          #format.json { render :show, status: :created, location: @issue_watch }
+        else
+          format.html { render :new }
+          #format.json { render json: @issue_watch.errors, status: :unprocessable_entity }
+        end
+      end 
     end
   end
 

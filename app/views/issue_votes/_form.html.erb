@@ -1,4 +1,4 @@
-<%= form_for(issue_vote) do |f| %>
+<%= form_for  issue_vote, url: "/issues/#{@issue.id}/votes"  do |f| %>
   <% if issue_vote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(issue_vote.errors.count, "error") %> prohibited this issue_vote from being saved:</h2>
@@ -11,17 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field" hidden>
-    <%= f.label :user %>
-    <%= f.number_field :user %>
-  </div>
-
-  <div class="field" hidden>
-    <%= f.label :issue %>
-    <%= f.number_field :issue %>
-  </div>
-
   <div class="actions">
-    <%= f.submit %>
+    <% if @user_vote %>
+      <%= f.submit 'Remove vote' %>
+    <% else %>
+      <%= f.submit 'Vote for this issue' %>
+    <% end %>
   </div>
 <% end %>

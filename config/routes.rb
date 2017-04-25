@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   get 'resumes/destroy'
 
-  resources :issue_watches
-  resources :issue_votes
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -20,6 +18,9 @@ Rails.application.routes.draw do
   
   post 'issues/:issue_id/attachments', to: 'resumes#create'
   #delete 'issues/:issue:id/attachments/:attachment_id', to: 'resumes#destroy'
+  
+  post 'issues/:issue_id/votes/', to: 'issue_votes#create'
+  post 'issues/:issue_id/watches/', to: 'issue_watches#create'
 
 
   root 'issues#index'

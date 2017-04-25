@@ -28,6 +28,13 @@ class IssuesController < ApplicationController
     @comment = Comment.new
     @resumes = Resume.where(issue_id: set_issue).order(created_at: :desc)
     @resume = Resume.new
+    @issue_votes = IssueVote.where(issue_id: set_issue).order(created_at: :desc)
+    @issue_vote = IssueVote.new
+    @user_vote = IssueVote.where(user_id: current_user.id, issue_id: set_issue).first
+    @issue_watches = IssueWatch.where(issue_id: set_issue).order(created_at: :desc)
+    @issue_watch = IssueWatch.new
+    @user_watch = IssueWatch.where(user_id: current_user.id, issue_id: set_issue).first
+
   end
 
   # GET /issues/new
