@@ -1,0 +1,2 @@
+class ApiSessionsControllerController < ApplicationController
+end

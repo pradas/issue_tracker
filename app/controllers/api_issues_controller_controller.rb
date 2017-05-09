@@ -1,0 +1,2 @@
+class ApiIssuesControllerController < ApplicationController
+end
