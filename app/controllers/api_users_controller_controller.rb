@@ -1,2 +1,0 @@
-class ApiUsersControllerController < ApplicationController
-end
