@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   #User management
   get 'api/users', to: 'api_users#index'
   
-  # post '/api/sessions', to: ''
+  post 'api/sessions', to: 'api_sessions#login'
   # delete '/api/sessions', to: ''
   
   # #Issues management

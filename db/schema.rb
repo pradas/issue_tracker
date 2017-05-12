@@ -45,8 +45,8 @@ ActiveRecord::Schema.define(version: 20170424033951) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.string   "status",      default: "1"
-    t.integer  "votes"
-    t.integer  "watchers"
+    t.integer  "votes",      default: "0"
+    t.integer  "watchers",      default: "0"
   end
 
   create_table "resumes", force: :cascade do |t|
