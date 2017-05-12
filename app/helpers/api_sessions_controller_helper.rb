@@ -1,0 +1,2 @@
+module ApiSessionsControllerHelper
+end

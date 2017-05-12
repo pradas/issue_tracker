@@ -1,0 +1,2 @@
+class ApiWatchersControllerController < ApplicationController
+end

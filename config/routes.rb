@@ -24,4 +24,35 @@ Rails.application.routes.draw do
 
 
   root 'issues#index'
+  
+  ###############
+  ## API Calls ##
+  ###############
+  
+  #User management
+  get 'api/users', to: 'api_users#index'
+  
+  # post '/api/sessions', to: ''
+  # delete '/api/sessions', to: ''
+  
+  # #Issues management
+  get 'api/issues', to: 'api_issues#index'
+  # post '/api/issues', to: ''
+  # get '/api/issues/:issue_id', to: ''
+  # put '/api/issues/:issue_id', to: ''
+  # delete '/api/issues/:issue_id', to: ''
+  # post '/api/issues/:issue_id/votes', to: ''
+  # delete '/api/issues/:issue_id/votes/:vote_id', to: ''
+  # post '/api/issues/:issue_id/watchers', to: ''
+  # delete '/api/issues/:issue_id/watchers/:watcher_id', to: ''
+  # get '/api/issues/:issue_id/comments', to: ''
+  # post '/api/issues/:issue_id/comments', to: ''
+  # get '/api/issues/:issue_id/comments/:comment_id', to: ''
+  # put '/api/issues/:issue_id/comments/:comment_id', to: ''
+  # delete '/api/issues/:issue_id/comments/:comment_id', to: ''
+  # get '/api/issues/:issue_id/attachments/', to: ''
+  # post '/api/issues/:issue_id/attachments/', to: ''
+  # get '/api/issues/:issue_id/attachments/:attachment_id', to: ''
+  # delete '/api/issues/:issue_id/attachments/:attachment_id', to: ''
+
 end
