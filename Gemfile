@@ -19,6 +19,8 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem "paperclip", git: "git://github.com/thoughtbot/paperclip.git"
+# Support for Cross-Origin Resource Sharing (CORS) for Rack compatible web applications
+gem 'rack-cors', :require => 'rack/cors'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
