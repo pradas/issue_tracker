@@ -36,8 +36,8 @@ Rails.application.routes.draw do
   # delete '/api/sessions', to: ''
   
   # #Issues management
-  get '/api/issues', to: 'api_issues#index'
-  # post '/api/issues', to: ''
+  get 'api/issues', to: 'api_issues#index'
+  post '/api/issues', to: 'api_issues#create'
   # get '/api/issues/:issue_id', to: ''
   # put '/api/issues/:issue_id', to: ''
   # delete '/api/issues/:issue_id', to: ''
