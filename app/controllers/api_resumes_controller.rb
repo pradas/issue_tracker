@@ -14,8 +14,8 @@ class ApiResumesController < ApplicationController
   def create
     if (Issue.where(id: params[:issue_id]).exists?)
       @resume = Resume.new()
-      @resume.name = params[:file][:attachment].original_filename
-      @resume.attachment = params[:file]
+      @resume.name = params[:resume][:attachment].original_filename
+      @resume.attachment = params[:resume]
       @resume.issue_id = params[:issue_id]
       @resume.user_id = current_user.id
 
@@ -24,6 +24,19 @@ class ApiResumesController < ApplicationController
         render :json => msg, :status => 201
       else
         render :json => { :error => "Missing parameters." }, :status => 400
+      end
+    else
+      render :json => { :error => "Issue not found." }, :status => 404
+    end
+  end
+  
+  def show
+    if Issue.where(id: params[:issue_id]).exists?
+      if Resume.where(id: params[:attachment_id], issue_id: params[:issue_id]).exists?
+        @resume = Resume.find(params[:attachment_id])
+        render status: :ok, file: "api/resumes/show.json.jbuilder"
+      else
+        render :json => { :error => "Resume not found." }, :status => 404
       end
     else
       render :json => { :error => "Issue not found." }, :status => 404

@@ -1,9 +1,25 @@
 class ApiIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token
   before_action :authenticate, only: [:create, :update, :destroy]
+  helper_method :sort_column, :sort_direction
+
   
   def index
-    @issues = Issue.all
+    if params[:responsible] != nil
+      @issues =Issue.where(["user_id = ?",params[:responsible]]).order(sort_column+" "+sort_direction)
+    else
+      @issues = Issue.order(sort_column+" "+sort_direction)
+    end 
+    if params[:kind] != nil
+      @issues = @issues.where(["kind = ?",params[:kind]]).order(sort_column+" "+sort_direction)
+    end
+    if params[:status] != nil
+      @issues = @issues.where(["status = ? or status = ?",params[:status],params[:status2]]).order(sort_column+" "+sort_direction)
+    end
+    if params[:priority] != nil
+      @issues = @issues.where(["priority = ?",params[:priority]]).order(sort_column+" "+sort_direction)
+    end
+    
     render status: :ok, file: "api/issues/index.json.jbuilder"
   end
   
@@ -77,4 +93,13 @@ class ApiIssuesController < ApplicationController
       render :json => { :error => "Issue not found." }, :status => 404
     end
   end
+  
+  private
+    def sort_column
+      Issue.column_names.include?(params[:sort]) ? params[:sort] : "Title"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+    end
 end

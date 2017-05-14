@@ -10,13 +10,13 @@ class IssuesController < ApplicationController
     else
       @issues = Issue.order(sort_column+" "+sort_direction)
     end 
-    if  params[:kind] != nil
+    if params[:kind] != nil
       @issues = @issues.where(["kind = ?",params[:kind]]).order(sort_column+" "+sort_direction)
     end
-    if  params[:status] != nil
+    if params[:status] != nil
       @issues = @issues.where(["status = ? or status = ?",params[:status],params[:status2]]).order(sort_column+" "+sort_direction)
     end
-    if  params[:priority] != nil
+    if params[:priority] != nil
       @issues = @issues.where(["priority = ?",params[:priority]]).order(sort_column+" "+sort_direction)
     end
     @issue_votes = IssueVote.order(created_at: :desc)

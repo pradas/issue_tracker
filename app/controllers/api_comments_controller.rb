@@ -31,6 +31,19 @@ class ApiCommentsController < ApplicationController
     end
   end
   
+  def show
+    if (Issue.where(id: params[:issue_id]).exists?)
+      if Comment.where(id: params[:comment_id], issue_id: params[:issue_id]).exists?
+        @comment = Comment.find(params[:comment_id])
+        render status: :ok, file: "api/comments/show.json.jbuilder"
+      else
+        render :json => { :error => "Comment not found." }, :status => 404
+      end
+    else
+      render :json => { :error => "Issue not found." }, :status => 404
+    end
+  end
+  
   def update
     if (Issue.where(id: params[:issue_id]).exists?)
       if Comment.where(id: params[:comment_id], issue_id: params[:issue_id]).exists?

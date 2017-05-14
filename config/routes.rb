@@ -31,11 +31,9 @@ Rails.application.routes.draw do
   
   #User management
   get 'api/users', to: 'api_users#index'
-  
   post 'api/sessions', to: 'api_sessions#login'
-  # delete '/api/sessions', to: '' ***Creo que no hace falta***
-  
-  # #Issues management
+
+  #Issues management
   get 'api/issues', to: 'api_issues#index'
   post '/api/issues', to: 'api_issues#create'
   get '/api/issues/:issue_id', to: 'api_issues#show'
@@ -47,12 +45,12 @@ Rails.application.routes.draw do
   delete '/api/issues/:issue_id/watchers', to: 'api_watchers#destroy'
   get '/api/issues/:issue_id/comments', to: 'api_comments#index'
   post '/api/issues/:issue_id/comments', to: 'api_comments#create'
-  # get '/api/issues/:issue_id/comments/:comment_id', to: ''   ***Creo que no hace falta***
+  get '/api/issues/:issue_id/comments/:comment_id', to: 'api_comments#show'
   put '/api/issues/:issue_id/comments/:comment_id', to: 'api_comments#update'
   delete '/api/issues/:issue_id/comments/:comment_id', to: 'api_comments#destroy'
   get '/api/issues/:issue_id/attachments/', to: 'api_resumes#index'
   post '/api/issues/:issue_id/attachments/', to: 'api_resumes#create'
-  # get '/api/issues/:issue_id/attachments/:attachment_id', to: ''   ***Creo que no hace falta***
+  get '/api/issues/:issue_id/attachments/:attachment_id', to: 'api_resumes#show'
   delete '/api/issues/:issue_id/attachments/:attachment_id', to: 'api_resumes#destroy'
 
 end
