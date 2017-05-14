@@ -33,12 +33,12 @@ Rails.application.routes.draw do
   get 'api/users', to: 'api_users#index'
   
   post 'api/sessions', to: 'api_sessions#login'
-  # delete '/api/sessions', to: ''
+  # delete '/api/sessions', to: '' ***Creo que no hace falta***
   
   # #Issues management
   get 'api/issues', to: 'api_issues#index'
   post '/api/issues', to: 'api_issues#create'
-  # get '/api/issues/:issue_id', to: ''
+  get '/api/issues/:issue_id', to: 'api_issues#show'
   # put '/api/issues/:issue_id', to: ''
   # delete '/api/issues/:issue_id', to: ''
   # post '/api/issues/:issue_id/votes', to: ''

@@ -26,4 +26,12 @@ class ApiIssuesController < ApplicationController
     end
   end
   
+  def show
+    if (Issue.where(id: params[:issue_id]).exists?)
+      @issue = Issue.find(params[:issue_id])
+      render status: :ok, file: "api/issues/show.json.jbuilder"
+    else
+      render :json => { :error => "Issue not found." }, :status => 404
+    end
+  end
 end

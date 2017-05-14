@@ -1,1 +1,0 @@
-json.extract! @issue, :title, :description, :user_id, :kind, :priority
