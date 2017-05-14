@@ -17,3 +17,10 @@ json.comments @issue.comments do |comment|
   json.user comment.user.name
   json.user_id comment.user_id
 end
+json.resumes @issue.resumes do |resume|
+  json.id resume.id
+  json.name resume.name
+  json.attachment resume.attachment.url
+  json.user resume.user.name
+  json.user_id resume.user_id
+end

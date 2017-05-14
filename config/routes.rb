@@ -50,9 +50,9 @@ Rails.application.routes.draw do
   # get '/api/issues/:issue_id/comments/:comment_id', to: ''   ***Creo que no hace falta***
   put '/api/issues/:issue_id/comments/:comment_id', to: 'api_comments#update'
   delete '/api/issues/:issue_id/comments/:comment_id', to: 'api_comments#destroy'
-  # get '/api/issues/:issue_id/attachments/', to: ''
-  # post '/api/issues/:issue_id/attachments/', to: ''
+  get '/api/issues/:issue_id/attachments/', to: 'api_resumes#index'
+  post '/api/issues/:issue_id/attachments/', to: 'api_resumes#create'
   # get '/api/issues/:issue_id/attachments/:attachment_id', to: ''   ***Creo que no hace falta***
-  # delete '/api/issues/:issue_id/attachments/:attachment_id', to: ''
+  delete '/api/issues/:issue_id/attachments/:attachment_id', to: 'api_resumes#destroy'
 
 end
