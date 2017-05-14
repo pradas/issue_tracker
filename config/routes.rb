@@ -42,17 +42,17 @@ Rails.application.routes.draw do
   put '/api/issues/:issue_id', to: 'api_issues#update'
   delete '/api/issues/:issue_id', to: 'api_issues#destroy'
   post '/api/issues/:issue_id/votes', to: 'api_votes#create'
-  # delete '/api/issues/:issue_id/votes/:vote_id', to: ''
-  # post '/api/issues/:issue_id/watchers', to: ''
-  # delete '/api/issues/:issue_id/watchers/:watcher_id', to: ''
-  # get '/api/issues/:issue_id/comments', to: ''
+  delete '/api/issues/:issue_id/votes', to: 'api_votes#destroy'
+  post '/api/issues/:issue_id/watchers', to: 'api_watchers#create'
+  delete '/api/issues/:issue_id/watchers', to: 'api_watchers#destroy'
+  get '/api/issues/:issue_id/comments', to: 'api_comments#index'
   # post '/api/issues/:issue_id/comments', to: ''
-  # get '/api/issues/:issue_id/comments/:comment_id', to: ''
+  # get '/api/issues/:issue_id/comments/:comment_id', to: ''   ***Creo que no hace falta***
   # put '/api/issues/:issue_id/comments/:comment_id', to: ''
   # delete '/api/issues/:issue_id/comments/:comment_id', to: ''
   # get '/api/issues/:issue_id/attachments/', to: ''
   # post '/api/issues/:issue_id/attachments/', to: ''
-  # get '/api/issues/:issue_id/attachments/:attachment_id', to: ''
+  # get '/api/issues/:issue_id/attachments/:attachment_id', to: ''   ***Creo que no hace falta***
   # delete '/api/issues/:issue_id/attachments/:attachment_id', to: ''
 
 end

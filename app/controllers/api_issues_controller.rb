@@ -71,7 +71,7 @@ class ApiIssuesController < ApplicationController
   
   def destroy
     if (Issue.where(id: params[:issue_id]).exists?)
-      @issue = Issue.destroy(params[:issue_id])
+      Issue.destroy(params[:issue_id])
       render :json => {:message => "Issue deleted"}, :status => 200
     else
       render :json => { :error => "Issue not found." }, :status => 404
