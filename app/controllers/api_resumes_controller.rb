@@ -36,7 +36,7 @@ class ApiResumesController < ApplicationController
         @resume = Resume.find(params[:attachment_id])
         render status: :ok, file: "api/resumes/show.json.jbuilder"
       else
-        render :json => { :error => "Resume not found." }, :status => 404
+        render :json => { :error => "Attachment not found." }, :status => 404
       end
     else
       render :json => { :error => "Issue not found." }, :status => 404
@@ -49,12 +49,12 @@ class ApiResumesController < ApplicationController
         @resume = Resume.find(params[:attachment_id])
         if @resume.user_id == current_user.id
           @resume.destroy
-          render :json => { :message => "Resume deleted" }, :status => 200
+          render :json => { :message => "Attachment deleted" }, :status => 200
         else
-          render :json => { :error => "This is not your resume." }, :status => :unauthorized
+          render :json => { :error => "This is not your attachment." }, :status => :unauthorized
         end
       else
-        render :json => { :error => "Resume not found." }, :status => 404
+        render :json => { :error => "Attachment not found." }, :status => 404
       end
     else
       render :json => { :error => "Issue not found." }, :status => 404

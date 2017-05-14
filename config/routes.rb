@@ -30,11 +30,12 @@ Rails.application.routes.draw do
   ###############
   
   #User management
-  get 'api/users', to: 'api_users#index'
-  post 'api/sessions', to: 'api_sessions#login'
+  get '/api/users', to: 'api_users#index'
+  get '/api/users/:user_id', to: 'api_users#show'
+  post '/api/sessions', to: 'api_sessions#login'
 
   #Issues management
-  get 'api/issues', to: 'api_issues#index'
+  get '/api/issues', to: 'api_issues#index'
   post '/api/issues', to: 'api_issues#create'
   get '/api/issues/:issue_id', to: 'api_issues#show'
   put '/api/issues/:issue_id', to: 'api_issues#update'

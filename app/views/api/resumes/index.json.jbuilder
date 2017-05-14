@@ -1,4 +1,4 @@
-json.resumes @resumes do |resume|
+json.attachments @resumes do |resume|
   json.id resume.id
   json.name resume.name
   json.attachment resume.attachment.url

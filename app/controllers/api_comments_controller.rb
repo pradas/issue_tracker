@@ -57,7 +57,7 @@ class ApiCommentsController < ApplicationController
             render :json => { :error => "Missing parameters." }, :status => 400
           end
         else
-          render :json => { :error => "This is not your comment." }, :status => :unauthorized
+          render :json => { :error => "This is not your comment." }, :status => 403
         end
       else
         render :json => { :error => "Comment not found." }, :status => 404
@@ -75,7 +75,7 @@ class ApiCommentsController < ApplicationController
           @comment.destroy
           render :json => { :message => "Comment deleted" }, :status => 200
         else
-          render :json => { :error => "This is not your comment." }, :status => :unauthorized
+          render :json => { :error => "This is not your comment." }, :status => 403
         end
       else
         render :json => { :error => "Comment not found." }, :status => 404
