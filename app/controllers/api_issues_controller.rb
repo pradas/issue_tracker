@@ -19,7 +19,7 @@ class ApiIssuesController < ApplicationController
     @issue.watchers = 0
 
     if @issue.save
-      msg = { :message => "Issue edited", :id => @issue.id, :title => @issue.title }
+      msg = { :message => "Issue created", :id => @issue.id, :title => @issue.title }
       render :json => msg, :status => 201
     else
       render :json => { :error => "Missing parameters." }, :status => 400
@@ -59,7 +59,7 @@ class ApiIssuesController < ApplicationController
       end
 
       if @issue.save
-        msg = { :message => "Success!", :id => @issue.id, :title => @issue.title }
+        msg = { :message => "Issue edited!", :id => @issue.id, :title => @issue.title }
         render :json => msg, :status => 200
       else
         render :json => {:error => "Params bad specified"}, :status => 400

@@ -46,10 +46,10 @@ Rails.application.routes.draw do
   post '/api/issues/:issue_id/watchers', to: 'api_watchers#create'
   delete '/api/issues/:issue_id/watchers', to: 'api_watchers#destroy'
   get '/api/issues/:issue_id/comments', to: 'api_comments#index'
-  # post '/api/issues/:issue_id/comments', to: ''
+  post '/api/issues/:issue_id/comments', to: 'api_comments#create'
   # get '/api/issues/:issue_id/comments/:comment_id', to: ''   ***Creo que no hace falta***
-  # put '/api/issues/:issue_id/comments/:comment_id', to: ''
-  # delete '/api/issues/:issue_id/comments/:comment_id', to: ''
+  put '/api/issues/:issue_id/comments/:comment_id', to: 'api_comments#update'
+  delete '/api/issues/:issue_id/comments/:comment_id', to: 'api_comments#destroy'
   # get '/api/issues/:issue_id/attachments/', to: ''
   # post '/api/issues/:issue_id/attachments/', to: ''
   # get '/api/issues/:issue_id/attachments/:attachment_id', to: ''   ***Creo que no hace falta***
