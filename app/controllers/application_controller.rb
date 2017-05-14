@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   def authenticate
     if request.headers['Authorization'].present?
       if (User.where(uid: request.headers['Authorization']).exists?)
-        @current_user = User.where(uid:  headers['Authorization']).take
+        @current_user = User.where(uid: request.headers['Authorization']).take
       else
         render json: { error: "your token is invalid" }, status: :unauthorized
       end
