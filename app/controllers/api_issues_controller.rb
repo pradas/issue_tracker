@@ -1,6 +1,6 @@
 class ApiIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_action :authenticate, only: [:create, :update]
+  before_action :authenticate, only: [:create, :update, :destroy]
   
   def index
     @issues = Issue.all
@@ -19,7 +19,7 @@ class ApiIssuesController < ApplicationController
     @issue.watchers = 0
 
     if @issue.save
-      msg = { :message => "Success!", :id => @issue.id, :title => @issue.title }
+      msg = { :message => "Issue edited", :id => @issue.id, :title => @issue.title }
       render :json => msg, :status => 201
     else
       render :json => { :error => "Missing parameters." }, :status => 400
@@ -62,8 +62,17 @@ class ApiIssuesController < ApplicationController
         msg = { :message => "Success!", :id => @issue.id, :title => @issue.title }
         render :json => msg, :status => 200
       else
-        render :json => {:error => "Params  bad specified"}, :status => 400
+        render :json => {:error => "Params bad specified"}, :status => 400
       end
+    else
+      render :json => { :error => "Issue not found." }, :status => 404
+    end
+  end
+  
+  def destroy
+    if (Issue.where(id: params[:issue_id]).exists?)
+      @issue = Issue.destroy(params[:issue_id])
+      render :json => {:message => "Issue deleted"}, :status => 200
     else
       render :json => { :error => "Issue not found." }, :status => 404
     end
