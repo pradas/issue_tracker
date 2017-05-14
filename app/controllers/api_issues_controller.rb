@@ -1,6 +1,6 @@
 class ApiIssuesController < ApplicationController
   skip_before_filter :verify_authenticity_token
-  before_action :authenticate, only: [:create]
+  before_action :authenticate, only: [:create, :update]
   
   def index
     @issues = Issue.all
@@ -30,6 +30,40 @@ class ApiIssuesController < ApplicationController
     if (Issue.where(id: params[:issue_id]).exists?)
       @issue = Issue.find(params[:issue_id])
       render status: :ok, file: "api/issues/show.json.jbuilder"
+    else
+      render :json => { :error => "Issue not found." }, :status => 404
+    end
+  end
+  
+  def update
+    if (Issue.where(id: params[:issue_id]).exists?)
+      @issue = Issue.find(params[:issue_id])
+      
+      if (params[:title] != nil)
+        @issue.title = params[:title]
+      end
+      if (params[:description] != nil)
+        @issue.description = params[:description]
+      end
+      if (params[:user_id] != nil)
+        @issue.user_id = params[:user_id]
+      end
+      if (params[:kind] != nil)
+        @issue.kind = params[:kind]
+      end
+      if (params[:priority] != nil)
+        @issue.priority = params[:priority]
+      end
+      if (params[:status] != nil)
+        @issue.status = params[:status]
+      end
+
+      if @issue.save
+        msg = { :message => "Success!", :id => @issue.id, :title => @issue.title }
+        render :json => msg, :status => 200
+      else
+        render :json => {:error => "Params  bad specified"}, :status => 400
+      end
     else
       render :json => { :error => "Issue not found." }, :status => 404
     end

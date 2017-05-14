@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   get 'api/issues', to: 'api_issues#index'
   post '/api/issues', to: 'api_issues#create'
   get '/api/issues/:issue_id', to: 'api_issues#show'
-  # put '/api/issues/:issue_id', to: ''
+  put '/api/issues/:issue_id', to: 'api_issues#update'
   # delete '/api/issues/:issue_id', to: ''
   # post '/api/issues/:issue_id/votes', to: ''
   # delete '/api/issues/:issue_id/votes/:vote_id', to: ''
