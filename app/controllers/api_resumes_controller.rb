@@ -17,7 +17,7 @@ class ApiResumesController < ApplicationController
       @resume.name = params[:resume][:attachment].original_filename
       @resume.attachment = params[:resume]
       @resume.issue_id = params[:issue_id]
-      @resume.user_id = current_user.id
+      @resume.user_id = @current_user.id
 
       if @resume.save
         msg = { :message => "Attachment created", :id => @resume.id, :name => @resume.name }
@@ -47,7 +47,7 @@ class ApiResumesController < ApplicationController
     if Issue.where(id: params[:issue_id]).exists?
       if Resume.where(id: params[:attachment_id], issue_id: params[:issue_id]).exists?
         @resume = Resume.find(params[:attachment_id])
-        if @resume.user_id == current_user.id
+        if @resume.user_id == @current_user.id
           @resume.destroy
           render :json => { :message => "Attachment deleted" }, :status => 200
         else

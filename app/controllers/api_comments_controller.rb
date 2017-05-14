@@ -18,7 +18,7 @@ class ApiCommentsController < ApplicationController
       @comment.pin = false
       @comment.spam = false
       @comment.issue_id = params[:issue_id]
-      @comment.user_id = current_user.id
+      @comment.user_id = @current_user.id
 
       if @comment.save
         msg = { :message => "Comment created", :id => @comment.id, :text => @comment.content }
@@ -48,7 +48,7 @@ class ApiCommentsController < ApplicationController
     if (Issue.where(id: params[:issue_id]).exists?)
       if Comment.where(id: params[:comment_id], issue_id: params[:issue_id]).exists?
         @comment = Comment.find(params[:comment_id])
-        if @comment.user_id == current_user.id
+        if @comment.user_id == @current_user.id
           @comment.content = params[:text]
           if @comment.save
             msg = { :message => "Comment edited", :id => @comment.id, :text => @comment.content }
@@ -71,7 +71,7 @@ class ApiCommentsController < ApplicationController
     if (Issue.where(id: params[:issue_id]).exists?)
       if Comment.where(id: params[:comment_id], issue_id: params[:issue_id]).exists?
         @comment = Comment.find(params[:comment_id])
-        if @comment.user_id == current_user.id
+        if @comment.user_id == @current_user.id
           @comment.destroy
           render :json => { :message => "Comment deleted" }, :status => 200
         else

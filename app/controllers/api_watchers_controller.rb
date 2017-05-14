@@ -22,8 +22,8 @@ class ApiWatchersController < ApplicationController
   
   def destroy
     if (Issue.where(id: params[:issue_id]).exists?)
-      if IssueWatch.where(user_id: current_user.id, issue_id: params[:issue_id]).exists?
-        IssueWatch.where(user_id: current_user.id, issue_id: params[:issue_id]).first.destroy
+      if IssueWatch.where(user_id: @current_user.id, issue_id: params[:issue_id]).exists?
+        IssueWatch.where(user_id: @current_user.id, issue_id: params[:issue_id]).first.destroy
         render :json => {:message => "Watcher deleted"}, :status => 200
       else
         render :json => { :error => "user didn't watched for this issue" }, :status => 409
