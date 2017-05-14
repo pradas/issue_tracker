@@ -4,15 +4,15 @@ class ApiWatchersController < ApplicationController
   
   def create
     if (Issue.where(id: params[:issue_id]).exists?)
-      if IssueWatch.where(user_id: current_user.id, issue_id: params[:issue_id]).exists?
+      if IssueWatch.where(user_id: @current_user.id, issue_id: params[:issue_id]).exists?
         render :json => {:error => "user already watched"}, :status => 409
       else
         @issue_vote = IssueWatch.new()
         @issue_vote.issue_id = params[:issue_id]
-        @issue_vote.user_id = current_user.id
+        @issue_vote.user_id = @current_user.id
     
         @issue_vote.save
-        msg = { :message => "Watched for a issue", :user_id => current_user.id, :issue_id => params[:issue_id] }
+        msg = { :message => "Watched for a issue", :user_id => @current_user.id, :issue_id => params[:issue_id] }
         render :json => msg, :status => 201
       end
     else
