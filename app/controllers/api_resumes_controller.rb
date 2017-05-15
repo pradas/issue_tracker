@@ -13,9 +13,8 @@ class ApiResumesController < ApplicationController
   
   def create
     if (Issue.where(id: params[:issue_id]).exists?)
-      @resume = Resume.new()
+      @resume = Resume.new(resume_params)
       @resume.name = params[:resume][:attachment].original_filename
-      @resume.attachment = params[:resume]
       @resume.issue_id = params[:issue_id]
       @resume.user_id = @current_user.id
 
@@ -59,5 +58,11 @@ class ApiResumesController < ApplicationController
     else
       render :json => { :error => "Issue not found." }, :status => 404
     end
+  end
+  
+  private
+  
+  def resume_params
+      params.require(:resume).permit(:name, :attachment)
   end
 end
