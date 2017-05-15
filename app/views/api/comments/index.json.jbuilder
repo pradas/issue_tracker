@@ -6,7 +6,7 @@ json.comments @comments do |comment|
   json.user_id comment.user_id
   json._link do
     json.user do
-      json.href "/api/users/"+comment.user_id
+      json.href "/api/users/".comment.user_id
     end
   end
 end
