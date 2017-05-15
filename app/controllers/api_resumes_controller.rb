@@ -13,7 +13,7 @@ class ApiResumesController < ApplicationController
   
   def create
     if (Issue.where(id: params[:issue_id]).exists?)
-      @resume = Resume.new(resume_params)
+      @resume = Resume.new(api_resume_params)
       @resume.name = params[:resume][:attachment].original_filename
       @resume.issue_id = params[:issue_id]
       @resume.user_id = @current_user.id
@@ -62,7 +62,7 @@ class ApiResumesController < ApplicationController
   
   private
   
-  def resume_params
+  def api_resume_params
     params.require(:resume).permit(:name, :attachment)
   end
 end
