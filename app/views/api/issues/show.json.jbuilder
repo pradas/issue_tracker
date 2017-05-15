@@ -24,3 +24,8 @@ json.attachments @issue.resumes do |resume|
   json.user resume.user.name
   json.user_id resume.user_id
 end
+json._link do
+  json.user do
+    json.href "/api/users/"+@issue.user_id.to_s
+  end
+end

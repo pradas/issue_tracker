@@ -1,4 +1,3 @@
-
 json.issues @issues do |issue|
   json.id issue.id
   json.title issue.title
@@ -12,4 +11,9 @@ json.issues @issues do |issue|
   json.status issue.status
   json.votes issue.issue_votes.count
   json.watchers issue.issue_watches.count
+  json._link do
+    json.user do
+      json.href "/api/users/"+issue.user_id.to_s
+    end
+  end
 end
