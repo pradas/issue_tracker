@@ -2,7 +2,7 @@ json.issues @issues do |issue|
   json.id issue.id
   json.title issue.title
   json.description issue.description
-  json.user_id issue.user.name
+  json.user issue.user.name
   json.user_id issue.user_id
   json.kind issue.kind
   json.priority issue.priority
