@@ -13,6 +13,9 @@ json.votes_user @issue.issue_votes do |vote|
   json.user vote.user.name
 end
 json.watchers @issue.issue_watches.count
+json.watchers_user @issue.issue_watches do |watch|
+  json.user watch.user.name
+end
 json.comments @issue.comments do |comment|
   json.id comment.id
   json.text comment.content
