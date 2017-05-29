@@ -9,6 +9,9 @@ json.created_at @issue.created_at
 json.updated_at @issue.updated_at
 json.status @issue.status
 json.votes @issue.issue_votes.count
+json.votes_user @issue.issue_votes do |vote|
+  json.user vote.user.name
+end
 json.watchers @issue.issue_watches.count
 json.comments @issue.comments do |comment|
   json.id comment.id
